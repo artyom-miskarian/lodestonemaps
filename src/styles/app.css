@@ -40,7 +40,7 @@
   width: min(30vw, 352px);
   aspect-ratio: 1;
   right: 7%;
-  top: 10%;
+  top: max(17%, 140px);
   color: var(--grey);
   pointer-events: none;
 }
@@ -66,6 +66,8 @@
   width: auto;
   height: 100%;
 }
+.logo-mark path,
+.logo-mark circle { transition: fill .14s linear; }
 .logo-mark-ash { fill: #D4D6D7; }
 .logo-mark-wine { fill: var(--wine); }
 .logo-mark--mono .logo-mark-ash,
@@ -81,8 +83,9 @@
   font-size: 21px;
   line-height: 1.1;
   letter-spacing: -.01em;
-  color: var(--text);
+  color: var(--grey);
   text-decoration: none;
+  transition: color .14s linear;
 }
 .wordmark:hover { color: var(--text); }
 .wordmark-text { display: block; }
@@ -92,10 +95,11 @@
   height: 34px;
   color: var(--grey);
   text-decoration: none;
+  transition: color .14s linear;
 }
 .footer-mark:hover { color: var(--text); }
 
-.topnav { display: flex; gap: var(--space-5); }
+.topnav { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); }
 .topnav a {
   font-family: var(--font-text);
   font-weight: 500;
@@ -179,6 +183,90 @@ main.frame > .section:first-child { border-top: 0; }
   border-bottom: 1px solid var(--rule);
 }
 .method-num { color: var(--grey); }
+.source-note { margin-top: var(--space-4); }
+
+.prose { display: grid; gap: var(--space-4); }
+
+.rule-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+.rule-item {
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--rule);
+}
+
+.map-entry {
+  display: grid;
+  gap: var(--space-3);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--rule);
+}
+.map-title { margin: 0; }
+.map-other { margin-top: var(--space-5); }
+
+.faq-list { border-top: 1px solid var(--rule); }
+
+.faq-item { border-bottom: 1px solid var(--rule); }
+
+.faq-q {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-3);
+  cursor: pointer;
+  list-style: none;
+  font-size: var(--step-lead);
+  line-height: 1.5;
+  color: var(--text);
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q:hover { color: var(--grey); }
+
+.faq-sign {
+  position: relative;
+  flex: 0 0 auto;
+  width: 11px;
+  height: 11px;
+  margin-top: 6px;
+}
+.faq-sign::before,
+.faq-sign::after {
+  content: '';
+  position: absolute;
+  background: var(--grey);
+}
+.faq-sign::before { left: 0; top: 5px; width: 11px; height: 1px; }
+.faq-sign::after { left: 5px; top: 0; width: 1px; height: 11px; }
+.faq-item[open] .faq-sign::after { display: none; }
+
+.faq-a { padding-bottom: var(--space-4); max-width: 68ch; }
+
+.contact-email { margin-top: var(--space-2); }
+
+.footer-line { max-width: none; }
+.footer-sep { color: var(--rule); }
+
+.anchor-alias {
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10;
+  background: var(--text);
+  color: var(--btn-text);
+  padding: 12px 22px;
+  text-decoration: none;
+}
+.skip-link:focus { left: var(--frame-pad); top: var(--space-2); }
 
 .markets { list-style: none; margin: var(--space-5) 0 0; padding: 0; display: grid; gap: var(--space-3); }
 .market {
@@ -293,8 +381,9 @@ main.frame > .section:first-child { border-top: 0; }
 
 @media (max-width: 900px) {
   .hero-inner { padding-block: var(--space-5) var(--space-4); }
+  .topnav { gap: var(--space-2) var(--space-4); }
   .hero-copy { padding-top: var(--space-8); }
-  .hero-rings { width: min(52vw, 320px); right: -8%; top: 4%; opacity: .8; }
+  .hero-rings { width: min(52vw, 320px); right: -8%; top: max(10%, 116px); opacity: .8; }
   .hero-copy .lead { max-width: 46ch; }
 
   .split { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
@@ -307,8 +396,9 @@ main.frame > .section:first-child { border-top: 0; }
   .actions .btn { flex: 1 1 auto; text-align: center; }
 
   .hero-top { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+  .topnav { gap: var(--space-2) var(--space-3); }
   .wordmark { height: 32px; font-size: 18px; }
   .footer-mark { height: 28px; }
   .topnav { gap: var(--space-4); }
-  .hero-rings { width: 260px; right: -6%; top: 3%; opacity: .6; }
+  .hero-rings { width: 260px; right: -6%; top: 132px; opacity: .6; }
 }

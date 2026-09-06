@@ -9,7 +9,7 @@ export function Hero() {
       <div className="frame hero-inner">
         <div className="hero-top">
           <a className="wordmark" href="#top">
-            <LogoMark />
+            <LogoMark mono />
             <span className="wordmark-text">{site.wordmark}</span>
           </a>
           <nav className="topnav" aria-label="Primary">

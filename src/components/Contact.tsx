@@ -43,11 +43,7 @@ export function Contact() {
         <div className="split-head">
           <h2 id="contact-heading">{contact.heading}</h2>
           <p className="muted">{contact.lead}</p>
-          {site.email ? (
-            <p className="small muted">
-              Or write to <a href={`mailto:${site.email}`}>{site.email}</a>.
-            </p>
-          ) : null}
+
         </div>
         {state === 'sent' ? (
           <div>
@@ -63,9 +59,9 @@ export function Contact() {
             <input
               type="hidden"
               name="subject"
-              value="Sample request — lodestonemaps.com"
+              value="Sample request from lodestonemaps.com"
             />
-            <input type="hidden" name="from_name" value="Lodestone Market Maps" />
+            <input type="hidden" name="from_name" value="Lodestone Maps" />
             <input
               type="checkbox"
               name="botcheck"
@@ -90,17 +86,16 @@ export function Contact() {
             </div>
             <div className="field">
               <label className="label" htmlFor="market">
-                Market
+                Market you are working on
               </label>
-              <span className="select-wrap">
-                <select className="select" id="market" name="market" defaultValue={contact.markets[0]}>
-                  {contact.markets.map((m) => (
-                    <option key={m} value={m}>
-                      {m}
-                    </option>
-                  ))}
-                </select>
-              </span>
+              <input
+                className="input"
+                id="market"
+                name="market"
+                type="text"
+                autoComplete="off"
+                placeholder="Singapore built-environment"
+              />
             </div>
             <div className="field">
               <label className="label" htmlFor="message">
@@ -126,6 +121,10 @@ export function Contact() {
               data-tone={state === 'error' ? 'error' : undefined}
             >
               {state === 'error' ? error : ''}
+            </p>
+
+            <p className="small muted contact-email">
+              Or write to <a href={`mailto:${site.email}`}>{site.email}</a>.
             </p>
             {!ACCESS_KEY && import.meta.env.DEV ? (
               <p className="small" style={{ color: 'var(--band-text)' }}>
