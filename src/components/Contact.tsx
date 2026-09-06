@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
-import { contact, site } from '../site-data';
+import { contact } from '../site-data';
 
 const ENDPOINT = 'https://api.web3forms.com/submit';
 const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string | undefined;
@@ -121,10 +121,6 @@ export function Contact() {
               data-tone={state === 'error' ? 'error' : undefined}
             >
               {state === 'error' ? error : ''}
-            </p>
-
-            <p className="small muted contact-email">
-              Or write to <a href={`mailto:${site.email}`}>{site.email}</a>.
             </p>
             {!ACCESS_KEY && import.meta.env.DEV ? (
               <p className="small" style={{ color: 'var(--band-text)' }}>

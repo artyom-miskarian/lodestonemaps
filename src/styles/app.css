@@ -291,8 +291,6 @@ main.frame > .section:first-child { border-top: 0; }
 
 .faq-a { padding-bottom: var(--space-4); max-width: 68ch; }
 
-.contact-email { margin-top: var(--space-2); }
-
 .footer-lines { display: grid; gap: var(--space-2); }
 .footer-lines p { max-width: none; }
 .footer-sep { color: var(--grey-dim); }
