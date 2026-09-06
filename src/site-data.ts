@@ -2,7 +2,6 @@ export const site = {
   name: 'Lodestone',
   wordmark: 'lodestonemaps',
   legalName: 'Lodestone Maps LLC',
-  jurisdiction: 'Armenia',
   domain: 'lodestonemaps.com',
   url: 'https://lodestonemaps.com/',
   email: 'info@lodestonemaps.com',

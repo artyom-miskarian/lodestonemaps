@@ -5,11 +5,7 @@ export function Footer() {
   return (
     <footer className="footer">
       <div className="footer-lines">
-        <p className="small muted">
-          {site.legalName}
-          <span className="footer-sep" aria-hidden="true"> · </span>
-          {site.jurisdiction}
-        </p>
+        <p className="small muted">{site.legalName}</p>
         <p className="small">
           <a href={`mailto:${site.email}`}>{site.email}</a>
         </p>
