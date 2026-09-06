@@ -1,4 +1,5 @@
 import { site } from '../site-data';
+import { LogoMark } from './LogoMark';
 
 export function Footer() {
   return (
@@ -6,7 +7,9 @@ export function Footer() {
       <p className="label">
         {site.name} · {site.wordmarkSuffix}
       </p>
-      <p className="label">{site.domain}</p>
+      <a className="footer-mark" href="#top" aria-label={`${site.name} ${site.wordmarkSuffix}, back to top`}>
+        <LogoMark mono />
+      </a>
     </footer>
   );
 }

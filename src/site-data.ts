@@ -1,5 +1,6 @@
 export const site = {
   name: 'Lodestone',
+  wordmark: 'lodestonemaps',
   wordmarkSuffix: 'Market Maps',
   domain: 'lodestonemaps.com',
   email: '',

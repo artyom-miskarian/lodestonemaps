@@ -61,7 +61,21 @@
   gap: var(--space-6);
 }
 
+.logo-mark {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+.logo-mark-ash { fill: #D4D6D7; }
+.logo-mark-wine { fill: var(--wine); }
+.logo-mark--mono .logo-mark-ash,
+.logo-mark--mono .logo-mark-wine { fill: currentColor; }
+
 .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  height: 44px;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 21px;
@@ -71,6 +85,15 @@
   text-decoration: none;
 }
 .wordmark:hover { color: var(--text); }
+.wordmark-text { display: block; }
+
+.footer-mark {
+  display: block;
+  height: 34px;
+  color: var(--grey);
+  text-decoration: none;
+}
+.footer-mark:hover { color: var(--text); }
 
 .topnav { display: flex; gap: var(--space-5); }
 .topnav a {
@@ -260,6 +283,7 @@ main.frame > .section:first-child { border-top: 0; }
 
 .footer {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: var(--space-4);
   justify-content: space-between;
@@ -283,6 +307,8 @@ main.frame > .section:first-child { border-top: 0; }
   .actions .btn { flex: 1 1 auto; text-align: center; }
 
   .hero-top { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+  .wordmark { height: 32px; font-size: 18px; }
+  .footer-mark { height: 28px; }
   .topnav { gap: var(--space-4); }
   .hero-rings { width: 260px; right: -6%; top: 3%; opacity: .6; }
 }

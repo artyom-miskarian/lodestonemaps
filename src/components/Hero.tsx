@@ -1,4 +1,5 @@
 import { hero, nav, site } from '../site-data';
+import { LogoMark } from './LogoMark';
 
 export function Hero() {
   return (
@@ -8,7 +9,8 @@ export function Hero() {
       <div className="frame hero-inner">
         <div className="hero-top">
           <a className="wordmark" href="#top">
-            {site.name}
+            <LogoMark />
+            <span className="wordmark-text">{site.wordmark}</span>
           </a>
           <nav className="topnav" aria-label="Primary">
             {nav.map((item) => (
