@@ -1,5 +1,6 @@
-import { hero, nav, site } from '../site-data';
+import { hero, site } from '../site-data';
 import { LogoMark } from './LogoMark';
+import { Nav } from './Nav';
 
 export function Hero() {
   return (
@@ -12,13 +13,7 @@ export function Hero() {
             <LogoMark mono />
             <span className="wordmark-text">{site.wordmark}</span>
           </a>
-          <nav className="topnav" aria-label="Primary">
-            {nav.map((item) => (
-              <a key={item.href} href={item.href}>
-                {item.label}
-              </a>
-            ))}
-          </nav>
+          <Nav />
         </div>
         <div className="hero-copy">
           <p className="label">{hero.kicker}</p>

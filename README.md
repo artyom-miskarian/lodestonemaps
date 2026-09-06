@@ -131,3 +131,12 @@ Breakpoints, per brandbook p.14: at 900px the layout goes single-column; at
 640px display type drops to 40px and page padding to 24px. The hero's compass
 rings are floored with `top: max(17%, 140px)` so they cannot ride up into the
 navigation on a short viewport.
+
+### Navigation
+
+At six items the inline navigation needs 472px and only fits on one line from
+800px up, so below 821px it collapses into a menu: a hairline button in the
+header and a full-screen asphalt panel with the items set in Spectral. The panel
+closes on Escape, on selecting an item, and on pressing the button again, and it
+locks body scroll while open. If a nav item is added or renamed, re-measure and
+raise the 820px breakpoint in `app.css` to match, or the row will wrap again.
