@@ -1,0 +1,40 @@
+:root {
+
+  --asphalt:    #272C2F;
+  --rail:       #333A3E;
+  --wine:       #5F1616;
+  --text:       #E6E8E8;
+  --band-text:  #EADFE0;
+  --band-label: #D4D4D7;
+  --grey:       #B7B7BA;
+  --grey-dim:   #9AA1A3;
+  --muted:      #AEB4B6;
+  --rule:       rgba(230,232,232,.22);
+  --rule-soft:  rgba(230,232,232,.12);
+  --btn-text:   #104768;
+  --rule-dark:  rgba(255,255,255,.2);
+  --font-display: "Spectral", Georgia, serif;
+  --font-text:    "Libre Franklin", system-ui, sans-serif;
+  --font-mono:    "IBM Plex Mono", monospace;
+  --step-display: 92px;
+  --step-h1:      56px;
+  --step-h2:      40px;
+  --step-h3:      26px;
+  --step-lead:    17px;
+  --step-body:    15px;
+  --step-small:   13.5px;
+  --step-label:   10px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 14px;
+  --space-4: 24px;
+  --space-5: 28px;
+  --space-6: 44px;
+  --space-7: 60px;
+  --space-8: 72px;
+  --frame-max:  1280px;
+  --frame-pad:  44px;
+  --rail-w:     168px;
+  --gutter:     24px;
+  --radius:     0;
+}
