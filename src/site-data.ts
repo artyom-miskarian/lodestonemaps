@@ -272,7 +272,7 @@ export const faq = {
     },
     {
       q: 'Who do I call first?',
-      a: 'Every firm is scored from 1 to 10 and placed in one of four tiers: Ready Now, Hot, Warm and Cold. The score rests on dated activity: government contracts won, major building contracts, projects the firm is named on, and current job ads. Each row says in one line why now.',
+      a: 'Every firm is scored from 1 to 10 and placed in one of four tiers: Ready Now, Hot, Warm and Cold. The score is computed from dated evidence: government contracts won, major building contracts, projects the firm is named on and current job ads, with recent evidence counting most. Each row says in one line why now.',
     },
     {
       q: 'What exactly do I receive?',
@@ -328,6 +328,7 @@ export type ProductBlock = {
   paragraphs?: readonly string[];
   list?: readonly string[];
   after?: readonly string[];
+  source?: { label: string; href: string };
 };
 
 export type Product = {
@@ -342,7 +343,7 @@ export const products: Record<'bim' | 'cmm', Product> = {
   bim: {
     label: 'Singapore · Available now',
     title: 'BIM Buyers Map',
-    lead: 'Which Singapore construction firms have to work with BIM and have no BIM team of their own, ranked by how soon each one is likely to buy.',
+    lead: 'The Singapore construction firms that have to deliver BIM and have no BIM team of their own, ranked by who is likely to buy first.',
     blocks: [
       {
         heading: 'Who it is for',
@@ -355,12 +356,17 @@ export const products: Record<'bim' | 'cmm', Product> = {
         paragraphs: [
           'Since 1 October 2026, every new building project of 5,000 m² and above in Singapore must be submitted through CORENET X, the submission system built on BIM models in the IFC-SG format. Many of the contractors, consultants and developers the rule reaches have no BIM people of their own. They build a team or buy the work from outside.',
         ],
+        source: {
+          label: 'Source: CORENET X implementation timeline, Singapore government',
+          href: 'https://support.corenet.gov.sg/hc/en-us/articles/14813415847695-What-is-the-implementation-timeline-for-CORENET-X',
+        },
       },
       {
         heading: 'What is in the map',
         paragraphs: [
           `${figures.bimBuyers} firms whose work falls under the rule and who have no BIM team of their own: contractors in BIM-relevant trades, architects and engineering consultants, and developers.`,
-          'Every firm is scored from 1 to 10 and placed in Ready Now, Hot, Warm or Cold. The score rests on dated activity: government contracts, major building contracts, CORENET X submissions and current hiring. Each row says why now.',
+          'Before a firm is counted as a buyer, its people and its own website are checked for BIM capacity. Where BIM capacity is found, the firm is listed separately, with the evidence.',
+          'Every firm is scored from 1 to 10 and placed in Ready Now, Hot, Warm or Cold. The score is computed from dated evidence: government contracts, major building contracts, CORENET X submissions and current hiring, with recent evidence counting most. Each row says why now.',
           `The rest of the market is in the same file, ${figures.companies} firms in all, each firm with its reason:`,
         ],
         list: [
@@ -409,6 +415,14 @@ export const products: Record<'bim' | 'cmm', Product> = {
         ],
       },
       {
+        heading: 'What it saves',
+        list: [
+          'Building the list by hand: the whole market is there on the first day, not only the few hundred firms everyone already knows.',
+          `Checking: the facts sit in ${figures.sources} sources that often disagree. Here they are matched firm by firm, by registry number, and put in one row.`,
+          'Guessing where to start: the firms that are winning work, hiring or starting new projects come first.',
+        ],
+      },
+      {
         heading: 'What is in the map',
         paragraphs: ['Every firm sits in one tab by type:'],
         list: [
@@ -424,21 +438,13 @@ export const products: Record<'bim' | 'cmm', Product> = {
           'Other construction firms',
         ],
         after: [
-          'Every firm is scored from 1 to 10 and placed in Ready Now, Hot, Warm or Cold by how busy it is now: contracts won, new building projects and hiring. Each row says why now.',
+          'Every firm is scored from 1 to 10 and placed in Ready Now, Hot, Warm or Cold by how busy it is now: contracts won, new building projects and hiring, with recent evidence counting most. Each row says why now.',
         ],
       },
       {
         heading: 'What is in a row',
         paragraphs: [
           "Registered name and UEN, kind of work, BCA licence and grade where the firm holds one, bizSAFE level, government contracts and projects, job ads in the last 90 days, website and business pages, the firm's published phone and e-mail, a named person with job title and level where one is public, and a link to the public source.",
-        ],
-      },
-      {
-        heading: 'What it saves',
-        list: [
-          'Building the list by hand: the whole market is there on the first day, not only the few hundred firms everyone already knows.',
-          `Checking: the facts sit in ${figures.sources} sources that often disagree. Here they are matched firm by firm, by registry number, and put in one row.`,
-          'Guessing where to start: the firms that are winning work, hiring or starting new projects come first.',
         ],
       },
       {

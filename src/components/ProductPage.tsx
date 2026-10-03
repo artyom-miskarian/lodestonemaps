@@ -33,6 +33,13 @@ export function ProductPage({ id }: { id: 'bim' | 'cmm' }) {
                     {p}
                   </p>
                 ))}
+                {block.source ? (
+                  <p className="small">
+                    <a className="text-link" href={block.source.href} rel="noopener">
+                      {block.source.label}
+                    </a>
+                  </p>
+                ) : null}
               </div>
             </div>
           </section>
