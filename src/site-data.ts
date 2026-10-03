@@ -614,18 +614,18 @@ export function jsonLd(page: PageId): object[] {
       availableLanguage: 'English',
     },
   };
+  /* Each map is described as a Service, not a Product: Google requires a price, reviews or ratings on
+     a Product (Search Console flagged "Product snippets / Merchant listings: invalid item"), and prices
+     are never published on the site. */
   const product = (id: 'bim' | 'cmm') => ({
     '@context': 'https://schema.org',
-    '@type': 'Product',
+    '@type': 'Service',
     name: products[id].title,
-    brand: { '@type': 'Brand', name: 'Lodestone Maps' },
+    serviceType: 'Market map',
     description: pages[id].description,
     url: `${site.url.replace(/\/$/, '')}${pages[id].path}`,
-    offers: {
-      '@type': 'Offer',
-      availability: 'https://schema.org/InStock',
-      url: `${site.url.replace(/\/$/, '')}${products[id].cta.href}`,
-    },
+    areaServed: { '@type': 'Country', name: 'Singapore' },
+    provider: { '@type': 'Organization', name: site.legalName, url: site.url },
   });
   if (page === 'home') {
     return [
