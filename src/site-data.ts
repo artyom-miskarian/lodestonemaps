@@ -151,15 +151,15 @@ export const builtToOrder = {
       rows: [
         {
           k: 'The question',
-          v: "Which privately held professional services firms, run by their partners or founders, fit a client's exact profile: size, ownership, and a business built on long client relationships?",
+          v: "Which privately held professional services firms, run by their partners or founders, fit a client's exact profile?",
         },
         {
-          k: 'What was done',
-          v: "The profile and the exclusions were written down before work started. Each firm was checked against its own record and public sources. The senior decision maker was named, with the firm's mailing address and phone.",
+          k: 'The approach',
+          v: 'The criteria and the exclusions were agreed before any research. Every firm qualified on its own record, not on a database estimate alone.',
         },
         {
           k: 'The result',
-          v: 'A list the client could approach with confidence. Each firm carried the reasoning behind its place, and borderline firms were flagged rather than included.',
+          v: 'A list the client could act on, with the reasoning behind every firm. Borderline cases were flagged, not included.',
         },
       ],
     },
@@ -169,15 +169,15 @@ export const builtToOrder = {
       rows: [
         {
           k: 'The question',
-          v: 'Which independent wholesale distributors in the Pacific Northwest fit a lower middle market profile in industrial and MRO supply, electrical, plumbing and HVAC supply, building materials, and janitorial, packaging and safety supply?',
+          v: 'Which independent wholesale distributors in the Pacific Northwest fit a lower middle market profile in industrial supply, electrical and HVAC, building materials and janitorial supply?',
         },
         {
-          k: 'What was done',
-          v: "The region was read firm by firm. Only privately held, independent distributors that met the client's size and trade-only criteria were kept, and a decision maker was named for each.",
+          k: 'The approach',
+          v: 'The whole region was read firm by firm, and ownership was confirmed in corporate registry records.',
         },
         {
           k: 'The result',
-          v: 'A list ready for outreach, and an exclusion log giving the reason each other firm was left out.',
+          v: 'The region covered end to end: a list ready for outreach, and an exclusion log with the reason behind every firm left out.',
         },
       ],
     },
