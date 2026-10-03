@@ -79,8 +79,12 @@ Organization. The FAQPage is built from the FAQ copy, so it never drifts.
 `lastmod` tracks the date of the last commit (falling back to the build date if
 git is unavailable in the build image).
 
-`public/og.png` (1200x630) and `public/apple-touch-icon.png` (180x180) are
-generated from the live hero and the favicon rather than drawn by hand. They are
+`public/og.png` (1200x630) is generated from the live hero. The icons
+(`favicon.ico`, `favicon-48.png`, `favicon-96.png`, `icon-192.png`,
+`apple-touch-icon.png`, `icon-512.png`, the Organization logo in JSON-LD) are
+rendered from `favicon.svg` (2026-10-03; the earlier apple-touch-icon was a
+capture of a broken image). `google87ca82c337dd98f9.html` verifies the site in
+Google Search Console: do not remove it. They are
 committed, so a normal build does not need a browser. Regenerate them only when
 the hero changes.
 

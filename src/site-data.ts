@@ -601,6 +601,7 @@ export function jsonLd(page: PageId): object[] {
     '@type': 'Organization',
     name: site.legalName,
     url: site.url,
+    logo: `${site.url}icon-512.png`,
     email: site.email,
     telephone: site.phone,
     description: 'Market maps of who buys: every company in a market, read from official registries and ranked by who is likely to buy. Maps of other markets are built to order.',
