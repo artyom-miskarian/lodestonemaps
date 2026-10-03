@@ -33,12 +33,12 @@ function Home() {
         {aliasFor('maps')}
         <Maps />
         <RowAnatomy />
-        <BuiltToOrder />
-        <OrderSteps />
         <Position />
         {aliasFor('sources')}
         <Sources />
         <Standard />
+        <BuiltToOrder />
+        <OrderSteps />
         <About />
         <Faq />
         <Contact />

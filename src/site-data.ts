@@ -72,8 +72,8 @@ export function pageFromPath(pathname: string): PageId {
 
 export const nav = [
   { label: 'Maps', href: '/#maps' },
+  { label: 'Standard', href: '/#standard' },
   { label: 'Built to order', href: '/#built-to-order' },
-  { label: 'How it works', href: '/#how-an-order-works' },
   { label: 'FAQ', href: '/#faq' },
   { label: 'Contact', href: '/#contact' },
 ] as const;
@@ -84,14 +84,14 @@ export const anchorAliases = [
 ] as const;
 
 export const hero = {
-  kicker: 'Market maps, built to order',
+  kicker: 'Market maps',
   heading: ['Lists tell you who exists.', 'Maps tell you who buys.'],
   lead:
-    'Lodestone builds market maps to order: every company in a market, read from its official ' +
-    'registries and its own record, and ranked by who is likely to buy. Two maps of the Singapore ' +
-    'construction market are available now.',
-  primary: { label: 'Request an overview', href: '#contact' },
-  secondary: { label: 'See the maps', href: '#maps' },
+    'Lodestone builds market maps: every company in a market, read from its official registries ' +
+    'and its own record, and ranked by who is likely to buy. Two maps of the Singapore construction ' +
+    'market are ready now.',
+  primary: { label: 'See the maps', href: '#maps' },
+  secondary: { label: 'Request an overview and sample', href: '#contact' },
 } as const;
 
 export const maps = {
@@ -102,7 +102,7 @@ export const maps = {
       label: 'Singapore · Available now',
       title: 'BIM Buyers Map',
       forWho: 'For firms that sell BIM services, BIM software or BIM training.',
-      body: `${figures.bimBuyers} Singapore construction firms whose work falls under the CORENET X rules and who have no BIM team of their own. Every firm is scored from 1 to 10 by how soon it is likely to buy, with the reason behind it.`,
+      body: `${figures.bimBuyers} Singapore construction firms whose work falls under CORENET X, in force since 1 October 2026, and who have no BIM team of their own. Every firm is scored from 1 to 10 by how soon it is likely to buy, with the reason behind it.`,
       link: { label: 'See the BIM Buyers Map', href: '/bim-buyers-map' },
     },
     {
@@ -191,6 +191,7 @@ export const builtToOrder = {
 
 export const orderSteps = {
   heading: 'How an order works',
+  intro: 'Every map, whether published by Lodestone or commissioned by a client, is built the same way.',
   steps: [
     {
       title: 'You name the market and what you sell into it.',
@@ -255,7 +256,7 @@ export const standard = {
 
 export const about = {
   heading: 'Who is Lodestone',
-  text: 'Lodestone Maps builds market maps for companies that sell to other companies. It reads one market at a time, starting from its official registries. The team works from Singapore and Yerevan.',
+  text: "Lodestone Maps is a research company that builds market maps for companies that sell to other companies. Every map starts from the official registries of its market and is checked firm by firm against each company's own record. Singapore construction comes first, and the wider Singapore built environment is next. The team works from Singapore and Yerevan, and in Singapore a business development partner meets clients in person.",
 } as const;
 
 export const faq = {
@@ -309,16 +310,16 @@ export const faq = {
 } as const;
 
 export const contact = {
-  heading: 'Request an overview',
+  heading: 'Request an overview and sample',
   lead:
-    'Tell Lodestone what you sell and to whom. You receive a short overview and a sample of typical rows for your segment.',
+    "Tell Lodestone what you sell and to whom. You receive a short overview and a sample of typical rows for your segment. Lodestone's business development partner in Singapore can then meet you in person or by video call.",
   reply: 'Replies within one business day.',
   mapOptions: [
     { value: 'bim-buyers-map', label: 'BIM Buyers Map' },
     { value: 'construction-market-map', label: 'Construction Market Map' },
     { value: 'other', label: 'A map of another market' },
   ],
-  button: 'Request an overview',
+  button: 'Request an overview and sample',
   sent: 'Thank you. Lodestone replies within one business day.',
 } as const;
 
@@ -389,7 +390,7 @@ export const products: Record<'bim' | 'cmm', Product> = {
         ],
       },
     ],
-    cta: { label: 'Request an overview', href: '/?map=bim-buyers-map#contact' },
+    cta: { label: 'Request an overview and sample', href: '/?map=bim-buyers-map#contact' },
   },
   cmm: {
     label: 'Singapore · Available now',
@@ -453,7 +454,7 @@ export const products: Record<'bim' | 'cmm', Product> = {
         ],
       },
     ],
-    cta: { label: 'Request an overview', href: '/?map=construction-market-map#contact' },
+    cta: { label: 'Request an overview and sample', href: '/?map=construction-market-map#contact' },
   },
 };
 
@@ -493,7 +494,7 @@ export const legal: Record<'privacy' | 'terms', { title: string; intro: string; 
       {
         heading: '5. Service providers',
         paragraphs: [
-          'We use trusted providers to run the site and handle messages: website hosting and security (Cloudflare), form delivery (Web3Forms) and e-mail (Zoho Mail). They process data only to provide their service to us.',
+          'We use trusted third-party infrastructure providers for website hosting, security, form delivery and corporate e-mail. They process data only on our instructions, to provide their service to us.',
         ],
       },
       {

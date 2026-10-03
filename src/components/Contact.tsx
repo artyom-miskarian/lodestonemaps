@@ -143,14 +143,13 @@ export function Contact() {
             </div>
             <div className="field">
               <label className="label" htmlFor="message">
-                What you sell, and to whom
+                What you sell, and to whom (optional)
               </label>
               <textarea
                 className="textarea"
                 id="message"
                 name="message"
                 rows={4}
-                required
                 placeholder="For example: M&E equipment to contractors and consultants."
               />
             </div>

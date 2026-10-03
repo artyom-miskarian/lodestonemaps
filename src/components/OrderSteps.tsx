@@ -7,6 +7,7 @@ export function OrderSteps() {
         <div className="split-head">
           <p className="label">How it works</p>
           <h2 id="order-heading">{orderSteps.heading}</h2>
+          <p className="muted">{orderSteps.intro}</p>
         </div>
 
         <ol className="method-list method-list--flush">
