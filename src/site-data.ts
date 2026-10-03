@@ -29,9 +29,9 @@ export const pages: Record<
   home: {
     path: '/',
     file: 'index.html',
-    title: 'Lodestone Maps: market maps built to order, verified to source',
+    title: 'Lodestone Maps: market maps of who buys, verified to source',
     description:
-      'Lodestone builds market maps to order: every company in a market, read from official registries and ranked by who is likely to buy. BIM Buyers Map and Construction Market Map for Singapore available now.',
+      'Lodestone builds market maps: every company in a market, read from official registries and ranked by who is likely to buy. The BIM Buyers Map and the Construction Market Map for Singapore are ready now.',
     ogTitle: 'Lists tell you who exists. Maps tell you who buys.',
   },
   bim: {
@@ -603,7 +603,7 @@ export function jsonLd(page: PageId): object[] {
     url: site.url,
     email: site.email,
     telephone: site.phone,
-    description: 'Market maps built to order: every company in a market, read from official registries and ranked by who is likely to buy.',
+    description: 'Market maps of who buys: every company in a market, read from official registries and ranked by who is likely to buy. Maps of other markets are built to order.',
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',
