@@ -77,9 +77,12 @@ for (const page of PAGES) {
     );
   }
   if (page.id === 'privacy' || page.id === 'terms') {
-    checks.push(['company registration in page', text.includes('01102394') && text.includes('Republic of Armenia')]);
+    checks.push(['company registration in page', text.includes('01102394') && text.includes('999.110.1608692') && text.includes('Republic of Armenia')]);
   }
-  if (page.id === 'terms') checks.push(['governing law: Armenia', text.includes('laws of the Republic of Armenia')]);
+  if (page.id === 'terms') {
+    checks.push(['governing law: Armenia for the general terms', text.includes('laws of the Republic of Armenia')]);
+    checks.push(['each order has its own contract', text.includes('own written contract')]);
+  }
 
   titles.add(title);
   console.log(`\n${where}`);

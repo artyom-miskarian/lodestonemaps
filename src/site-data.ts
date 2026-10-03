@@ -11,7 +11,7 @@ export const site = {
   phoneHref: 'tel:+6589746947',
   whatsappHref: 'https://wa.me/6589746947',
   registration:
-    'registered in the Republic of Armenia on 7 September 2026, taxpayer identification number 01102394',
+    'registered in the Republic of Armenia on 7 September 2026, state registration number 999.110.1608692, taxpayer identification number 01102394',
 } as const;
 
 export const figures = {
@@ -38,7 +38,7 @@ export const pages: Record<
     path: '/bim-buyers-map',
     file: 'bim-buyers-map.html',
     title: 'BIM Buyers Map, Singapore · Lodestone Maps',
-    description: `${figures.bimBuyers} Singapore construction firms that fall under CORENET X and have no BIM team of their own, scored 1 to 10 by how soon each is likely to buy.`,
+    description: `${figures.bimBuyers} Singapore construction firms in the trades CORENET X reaches, with no BIM footprint in their people or on their website, scored 1 to 10 by how soon each is likely to buy.`,
     ogTitle: 'BIM Buyers Map, Singapore',
   },
   cmm: {
@@ -102,7 +102,7 @@ export const maps = {
       label: 'Singapore · Available now',
       title: 'BIM Buyers Map',
       forWho: 'For firms that sell BIM services, BIM software or BIM training.',
-      body: `${figures.bimBuyers} Singapore construction firms in the trades CORENET X reaches, with no BIM team of their own. Since 1 October 2026, every new building project of 5,000 m² and above goes through CORENET X. Every firm is scored from 1 to 10 by how soon it is likely to buy, with the reason behind it.`,
+      body: `${figures.bimBuyers} Singapore construction firms in the trades CORENET X reaches, with no BIM footprint in their people or on their website. Since 1 October 2026, every new building project of 5,000 m² and above goes through CORENET X. Every firm is scored from 1 to 10 by how soon it is likely to buy, with the reason behind it.`,
       link: { label: 'See the BIM Buyers Map', href: '/bim-buyers-map' },
     },
     {
@@ -343,7 +343,7 @@ export const products: Record<'bim' | 'cmm', Product> = {
   bim: {
     label: 'Singapore · Available now',
     title: 'BIM Buyers Map',
-    lead: 'The Singapore construction firms in the trades CORENET X reaches that have no BIM team of their own, ranked by who is likely to buy first.',
+    lead: 'The Singapore construction firms in the trades CORENET X reaches, with no BIM footprint in their people or on their website, ranked by who is likely to buy first.',
     blocks: [
       {
         heading: 'Who it is for',
@@ -355,7 +355,7 @@ export const products: Record<'bim' | 'cmm', Product> = {
         heading: 'Why now',
         paragraphs: [
           'Since 1 October 2026, every new building project of 5,000 m² and above in Singapore must be submitted through CORENET X, with BIM models in the IFC-SG format. The format and the gateways are new for everyone on such a project, from the consultants who submit to the builders who hand over the as-built model.',
-          `In ${figures.bimBuyers} of the firms in the trades the rule reaches, Lodestone found no BIM team of their own. They build a team or buy the work from outside.`,
+          `In ${figures.bimBuyers} of the firms in the trades the rule reaches, Lodestone found no BIM footprint in their people or on their website. They build a team or buy the work from outside.`,
         ],
         source: {
           label: 'Source: CORENET X implementation timeline (support.corenet.gov.sg)',
@@ -365,7 +365,7 @@ export const products: Record<'bim' | 'cmm', Product> = {
       {
         heading: 'What is in the map',
         paragraphs: [
-          `${figures.bimBuyers} firms in the trades the rule reaches, with no BIM team of their own: contractors in BIM-relevant trades, architects and engineering consultants, and developers.`,
+          `${figures.bimBuyers} firms in the trades the rule reaches, with no BIM footprint in their people or on their website: contractors in BIM-relevant trades, architects and engineering consultants, and developers.`,
           'Before a firm is counted as a buyer, its people and its own website are checked for BIM capacity. Where BIM capacity is found, the firm is listed separately, with the evidence.',
           'Every firm is scored from 1 to 10 and placed in Ready Now, Hot, Warm or Cold. The score is computed from dated evidence: government contracts, major building contracts, projects named in CORENET X records and current hiring, with recent evidence counting most. Each row says why now.',
           `The rest of the market is in the same file, ${figures.companies} firms in all, each firm with its reason:`,
@@ -555,7 +555,7 @@ export const legal: Record<'privacy' | 'terms', { title: string; intro: string; 
       {
         heading: '4. Orders',
         paragraphs: [
-          `Orders are made with and invoiced by ${site.legalName}. The scope, price, delivery and licence of each map are agreed in writing for each order. Those terms take precedence over these general terms.`,
+          `Every order is made under its own written contract with ${site.legalName}, which also invoices it. Lodestone's lawyer prepares the contract and agrees it with the client: scope, price, delivery, licence, governing law and how disputes are resolved. That contract takes precedence over these general terms.`,
         ],
       },
       {
@@ -583,7 +583,7 @@ export const legal: Record<'privacy' | 'terms', { title: string; intro: string; 
       {
         heading: '9. Governing law',
         paragraphs: [
-          'These terms are governed by the laws of the Republic of Armenia, and disputes are settled by the courts of the Republic of Armenia.',
+          'These general terms are governed by the laws of the Republic of Armenia. The contract for each order sets its own governing law and forum.',
         ],
       },
       {
