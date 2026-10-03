@@ -96,7 +96,7 @@ export const hero = {
 
 export const maps = {
   heading: 'Maps',
-  intro: 'Each map covers one market and answers one question: who buys. These are available now.',
+  intro: 'Each map covers one market and shows who in it is likely to buy. Two are available now, and a third is in preparation.',
   cards: [
     {
       label: 'Singapore · Available now',
@@ -125,7 +125,7 @@ export const maps = {
 
 export const rowAnatomy = {
   heading: 'What is in a row',
-  lead: 'A row is only as good as what can be checked behind it.',
+  lead: 'Every part of a row can be checked against a public record.',
   cells: [
     { label: 'Identity', text: 'Registered name, registry number, date of incorporation.' },
     {
@@ -155,11 +155,11 @@ export const builtToOrder = {
         },
         {
           k: 'The approach',
-          v: 'The criteria and the exclusions were agreed before any research. Every firm qualified on its own record, not on a database estimate alone.',
+          v: 'The criteria and the exclusions were agreed before any research began. Each firm was qualified on its own record, with database estimates used only as a cross-check.',
         },
         {
           k: 'The result',
-          v: 'A list the client could act on, with the reasoning behind every firm. Borderline cases were flagged, not included.',
+          v: 'A list the client could act on, with the reasoning behind every firm and the borderline cases marked separately.',
         },
       ],
     },
@@ -183,7 +183,7 @@ export const builtToOrder = {
     },
   ],
   close: {
-    title: 'Name your market.',
+    title: 'Other markets',
     text: 'If it has official registries and companies that publish, it can be mapped to the same standard.',
     link: { label: 'Tell Lodestone about it', href: '/?map=other#contact' },
   },
@@ -199,15 +199,15 @@ export const orderSteps = {
     },
     {
       title: 'Lodestone reads the registries.',
-      text: 'The official registries set who is in the market. Every company enters through its registry number, never through a similar-looking name.',
+      text: 'The official registries set who is in the market, and every company enters through its registry number.',
     },
     {
       title: "Lodestone reads each company's own record.",
-      text: 'Website, notices, job ads, licences, contracts. Facts keep their source, and dated facts keep their date.',
+      text: 'This covers the website, notices, job ads, licences and contracts. Every fact keeps its source, and dated facts keep their date.',
     },
     {
       title: 'You receive the map.',
-      text: 'One spreadsheet, one row per company, ranked, with its sources, and a short presentation that explains it. Updates on request.',
+      text: 'One spreadsheet, one row per company, ranked, with its sources, and a short presentation that explains it. Updates are made on request.',
     },
   ],
 } as const;
@@ -216,15 +216,15 @@ export const position = {
   heading: 'A claim without its source does not exist.',
   paragraphs: [
     "In a Lodestone map every fact comes from a document that can be opened: a registry entry, a contract award, a job ad, the company's own website. If a fact cannot be found in a document, it is not filled in.",
-    'A map covers the whole market, every company in it, not a sample. A sample can be argued with. A registry cannot.',
+    "A map covers every company in the market's registries, so the picture does not depend on a sample.",
     'Dated facts keep their dates, so you can see what is current.',
-    'Any market can be read this way. Lodestone reads one market at a time.',
+    'The same method works in any market with official registries, and Lodestone builds one market at a time.',
   ],
 } as const;
 
 export const sources = {
-  heading: 'Which sources are allowed to speak',
-  lead: 'Before a map is built, Lodestone decides which sources may speak and in what order.',
+  heading: 'Where the facts come from',
+  lead: 'Before a map is built, Lodestone sets which sources count and in what order.',
   tiers: [
     {
       title: 'Official registries first.',
@@ -232,11 +232,11 @@ export const sources = {
     },
     {
       title: "The company's own record second.",
-      text: 'Its website, its notices, its job ads. What a company says about itself, read at the source.',
+      text: 'Its website, notices and job ads, read where the company published them.',
     },
     {
       title: 'Everything else last.',
-      text: 'Directories and aggregators help find companies. They never override an official record.',
+      text: 'Directories and aggregators help find companies, but an official record always takes precedence over them.',
     },
   ],
   note: "Every source is public or official. A map records facts with a link to where they were published; it does not copy other websites' content. Business details about people are handled under Singapore's Personal Data Protection Act.",
@@ -249,7 +249,7 @@ export const standard = {
     'A website, a page or a person is shown only when it is confirmed to belong to that exact firm or its group.',
     'Nothing is filled in by guessing.',
     'Dated facts carry their dates: contract awards, job ads, licence expiry.',
-    'Firms are not silently dropped. A firm outside the buying criterion keeps its place in the file, with the reason.',
+    'A firm outside the buying criterion stays in the file, with the reason.',
     'An official record outranks a directory or an aggregator.',
   ],
 } as const;
@@ -264,11 +264,11 @@ export const faq = {
   items: [
     {
       q: 'What does my team gain?',
-      a: 'Time and focus. Building a list of firms to call usually takes a new sales hire months, and it covers only the firms one person manages to find. The map gives your team the whole market on the first day, with the firms that are winning work, hiring or named on new projects at the top. Their time goes into calls and meetings, not research.',
+      a: 'Building a list of firms to call usually takes a new sales hire months, and it only covers the firms one person manages to find. The map gives your team the whole market on the first day, with the firms that are winning work, hiring or named on new projects at the top, so their time goes into calls and meetings.',
     },
     {
       q: 'Does it replace a salesperson?',
-      a: 'No. It gives your salespeople the list, so their time goes into selling. The calls and the relationships stay with your team.',
+      a: 'No. Your salespeople get the list and spend their time selling. The calls and the client relationships stay with them.',
     },
     {
       q: 'Who do I call first?',
@@ -280,11 +280,11 @@ export const faq = {
     },
     {
       q: 'How can a row be checked?',
-      a: "Every row links to the public record behind it, such as the firm's entry in a register or its own website. Contracts, job ads and licences carry their dates. Open the link and compare.",
+      a: "Every row links to the public record behind it, such as the firm's entry in a register or its own website. Contracts, job ads and licences carry their dates, so any row can be checked by opening its link.",
     },
     {
       q: 'How is a map different from a contact database?',
-      a: 'A contact database lists companies and people that exist. A map takes one market, sets a buying criterion and places every company in it: who has to buy, who is busy now, who is outside the criterion and why. Contacts are part of a row, not the point of it.',
+      a: 'A contact database lists companies and people that exist. A map takes one market, sets a buying criterion and places every company in it: who has to buy, who is busy now, who is outside the criterion and why. Contacts are one part of a row.',
     },
     {
       q: 'How do I check it before buying?',
@@ -300,7 +300,7 @@ export const faq = {
     },
     {
       q: 'Can Lodestone build a map of my market?',
-      a: 'Yes. A market can be mapped when it has official registries and companies that publish. Tell Lodestone what you sell and to whom. The buying criterion is written down with you before any work starts.',
+      a: 'Yes, if the market has official registries and companies that publish. Tell Lodestone what you sell and to whom, and the buying criterion is agreed with you first.',
     },
     {
       q: 'How do I start?',
@@ -418,9 +418,9 @@ export const products: Record<'bim' | 'cmm', Product> = {
       {
         heading: 'What it saves',
         list: [
-          'Building the list by hand: the whole market is there on the first day, not only the few hundred firms everyone already knows.',
-          `Checking: the facts sit in ${figures.sources} sources that often disagree. Here they are matched firm by firm, by registry number, and put in one row.`,
-          'Guessing where to start: the firms that are winning work, hiring or starting new projects come first.',
+          'Your team does not build the list by hand. The whole market is in the file on the first day, beyond the few hundred firms everyone already knows.',
+          `The facts come from ${figures.sources} sources that often disagree. The map matches them firm by firm, by registry number, and puts them in one row.`,
+          'The firms that are winning work, hiring or starting new projects are at the top, so your team knows where to start.',
         ],
       },
       {
@@ -501,7 +501,7 @@ export const legal: Record<'privacy' | 'terms', { title: string; intro: string; 
       {
         heading: '5. Service providers',
         paragraphs: [
-          'We use trusted third-party infrastructure providers for website hosting, security, form delivery and corporate e-mail. They process data only on our instructions, to provide their service to us. Personal data may be stored and processed outside Singapore, including in Armenia and by these providers. Where it is, we protect it to a standard comparable to the PDPA.',
+          'We use third-party infrastructure providers for website hosting, security, form delivery and corporate e-mail. They process data only on our instructions, to provide their service to us. Personal data may be stored and processed outside Singapore, including in Armenia and by these providers. Where it is, we protect it to a standard comparable to the PDPA.',
         ],
       },
       {
@@ -519,7 +519,7 @@ export const legal: Record<'privacy' | 'terms', { title: string; intro: string; 
       {
         heading: '8. Security',
         paragraphs: [
-          'We protect data with access controls and trusted providers. No method of transfer or storage is completely secure, but we take reasonable care.',
+          'We protect data with access controls and by choosing established providers. No method of transfer or storage is completely secure, but we take reasonable care.',
         ],
       },
       {
