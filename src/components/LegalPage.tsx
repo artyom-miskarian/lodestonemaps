@@ -1,11 +1,11 @@
-import { legal, site } from '../site-data';
+import { legal } from '../site-data';
 import { PageTop } from './PageTop';
 
 export function LegalPage({ id }: { id: 'privacy' | 'terms' }) {
   const doc = legal[id];
   return (
     <>
-      <PageTop title={doc.title} lead={`Last updated: ${site.legalUpdated}`} />
+      <PageTop title={doc.title} />
       <main className="frame" id="content">
         <section className="section legal">
           <p className="lead legal-intro">{doc.intro}</p>

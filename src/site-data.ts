@@ -12,7 +12,6 @@ export const site = {
   whatsappHref: 'https://wa.me/6589746947',
   registration:
     'registered in the Republic of Armenia on 7 September 2026, taxpayer identification number 01102394',
-  legalUpdated: '3 October 2026',
 } as const;
 
 export const figures = {
@@ -152,7 +151,7 @@ export const builtToOrder = {
       rows: [
         {
           k: 'The question',
-          v: "Which privately held professional services firms, run by their partners or founders, fit a client's exact profile: size, ownership, and a business built on long client relationships.",
+          v: "Which privately held professional services firms, run by their partners or founders, fit a client's exact profile: size, ownership, and a business built on long client relationships?",
         },
         {
           k: 'What was done',
@@ -170,7 +169,7 @@ export const builtToOrder = {
       rows: [
         {
           k: 'The question',
-          v: 'Which independent wholesale distributors in the Pacific Northwest fit a lower middle market profile in industrial and MRO supply, electrical, plumbing and HVAC supply, building materials, and janitorial, packaging and safety supply.',
+          v: 'Which independent wholesale distributors in the Pacific Northwest fit a lower middle market profile in industrial and MRO supply, electrical, plumbing and HVAC supply, building materials, and janitorial, packaging and safety supply?',
         },
         {
           k: 'What was done',
@@ -361,7 +360,7 @@ export const products: Record<'bim' | 'cmm', Product> = {
         paragraphs: [
           `${figures.bimBuyers} firms whose work falls under the rule and who have no BIM team of their own: contractors in BIM-relevant trades, architects and engineering consultants, and developers.`,
           'Every firm is scored from 1 to 10 and placed in Ready Now, Hot, Warm or Cold. The score rests on dated activity: government contracts, major building contracts, CORENET X submissions and current hiring. Each row says why now.',
-          'The rest of the market is in the file too, each firm with its reason:',
+          `The rest of the market is in the same file, ${figures.companies} firms in all, each firm with its reason:`,
         ],
         list: [
           'firms with their own BIM team, with the evidence, so your team does not spend time on them',
@@ -517,7 +516,7 @@ export const legal: Record<'privacy' | 'terms', { title: string; intro: string; 
       },
       {
         heading: '9. Changes',
-        paragraphs: ['We may update this policy. The date at the top shows the latest version.'],
+        paragraphs: ['We may update this policy from time to time. The current version is always published on this page.'],
       },
       {
         heading: '10. Contact',

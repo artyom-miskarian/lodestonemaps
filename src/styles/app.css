@@ -123,10 +123,10 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-3);
-  height: 44px;
+  height: 58px;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 21px;
+  font-size: 27px;
   line-height: 1.1;
   letter-spacing: -.01em;
   color: var(--grey);
@@ -436,7 +436,7 @@ main.frame > .anchor-alias:first-child + .section { border-top: 0; }
 
 @media (max-width: 1180px) {
   .menu-btn { display: flex; }
-  .wordmark { position: relative; z-index: 30; height: 34px; font-size: 18px; }
+  .wordmark { position: relative; z-index: 30; height: 42px; font-size: 22px; }
 
   .topnav {
     position: fixed;

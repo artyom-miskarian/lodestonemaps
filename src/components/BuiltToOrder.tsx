@@ -5,7 +5,7 @@ export function BuiltToOrder() {
     <section className="section" id="built-to-order" aria-labelledby="built-heading">
       <div className="split">
         <div className="split-head">
-          <p className="label">Built to order</p>
+          <p className="label">Past work</p>
           <h2 id="built-heading">{builtToOrder.heading}</h2>
           <p className="muted">{builtToOrder.intro}</p>
         </div>

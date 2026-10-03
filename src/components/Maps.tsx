@@ -5,7 +5,7 @@ export function Maps() {
     <section className="section" id="maps" aria-labelledby="maps-heading">
       <div className="split">
         <div className="split-head">
-          <p className="label">Maps</p>
+          <p className="label">Singapore</p>
           <h2 id="maps-heading">{maps.heading}</h2>
           <p className="muted">{maps.intro}</p>
         </div>
