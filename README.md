@@ -158,8 +158,8 @@ navigation on a short viewport.
 ### Navigation
 
 With five sections plus the phone and WhatsApp links the inline navigation
-needs about 900px, so below 1181px it collapses into a menu: a hairline button in the
+needs about 1,000px at 13px, so below 1301px it collapses into a menu: a hairline button in the
 header and a full-screen asphalt panel with the items set in Spectral. The panel
 closes on Escape, on selecting an item, and on pressing the button again, and it
 locks body scroll while open. If a nav item is added or renamed, re-measure and
-raise the 1180px breakpoint in `app.css` to match, or the row will wrap again.
+raise the 1300px breakpoint in `app.css` to match, or the row will wrap again.
