@@ -7,15 +7,25 @@ export function Maps() {
         <div className="split-head">
           <p className="label">Maps</p>
           <h2 id="maps-heading">{maps.heading}</h2>
+          <p className="muted">{maps.intro}</p>
         </div>
 
         <div>
-          <div className="map-entry">
-            <p className="label">{maps.active.label}</p>
-            <h3 className="map-title">{maps.active.title}</h3>
-            <p className="muted">{maps.active.body}</p>
-            <p className="small">{maps.active.detail}</p>
-          </div>
+          {maps.cards.map((card) => (
+            <div className="map-entry" key={card.title}>
+              <p className="label">{card.label}</p>
+              <h3 className="map-title">{card.title}</h3>
+              {card.forWho ? <p className="map-for">{card.forWho}</p> : null}
+              <p className="muted">{card.body}</p>
+              {card.link ? (
+                <p>
+                  <a className="text-link" href={card.link.href}>
+                    {card.link.label}
+                  </a>
+                </p>
+              ) : null}
+            </div>
+          ))}
           <p className="muted map-other">{maps.other}</p>
         </div>
       </div>

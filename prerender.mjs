@@ -1,16 +1,23 @@
 import { readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { execSync } from 'node:child_process';
-import { render } from './dist-ssr/entry-server.js';
+import { render, head, pages } from './dist-ssr/entry-server.js';
 
-const file = 'dist/index.html';
-const marker = '<div id="root"></div>';
-const html = readFileSync(file, 'utf8');
+// The client build gives one template (dist/index.html). Every page is that template with its own
+// <head> block and its own prerendered body, written to the file named in `pages` (site-data.ts).
+const template = readFileSync('dist/index.html', 'utf8');
+const rootMarker = '<div id="root"></div>';
+const headRe = /<!--head:start-->[\s\S]*?<!--head:end-->/;
 
-if (!html.includes(marker)) {
-  throw new Error(`prerender: could not find ${marker} in ${file}`);
+if (!template.includes(rootMarker)) throw new Error(`prerender: could not find ${rootMarker}`);
+if (!headRe.test(template)) throw new Error('prerender: could not find the head markers');
+
+for (const [id, page] of Object.entries(pages)) {
+  const html = template
+    .replace(headRe, head(id))
+    .replace(rootMarker, `<div id="root" data-page="${id}">${render(id)}</div>`);
+  writeFileSync(`dist/${page.file}`, html);
+  console.log(`prerendered dist/${page.file} (${(html.length / 1024).toFixed(1)} kB)`);
 }
-
-writeFileSync(file, html.replace(marker, `<div id="root">${render()}</div>`));
 rmSync('dist-ssr', { recursive: true, force: true });
 
 function lastModified() {
@@ -27,20 +34,23 @@ function lastModified() {
 }
 
 const lastmod = lastModified();
+const urls = Object.values(pages)
+  .map(
+    (page) => `  <url>
+    <loc>https://lodestonemaps.com${page.path}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>${page.path === '/' ? '1.0' : '0.8'}</priority>
+  </url>`,
+  )
+  .join('\n');
 
 writeFileSync(
   'dist/sitemap.xml',
   `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://lodestonemaps.com/</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
+${urls}
 </urlset>
 `,
 );
-
-const bytes = readFileSync(file, 'utf8').length;
-console.log(`prerendered ${file} (${(bytes / 1024).toFixed(1)} kB), sitemap lastmod ${lastmod}`);
+console.log(`sitemap: ${Object.keys(pages).length} pages, lastmod ${lastmod}`);

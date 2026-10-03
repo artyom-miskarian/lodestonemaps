@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { nav } from '../site-data';
+import { nav, site } from '../site-data';
 
 const PANEL_ID = 'primary-nav';
 
@@ -46,6 +46,12 @@ export function Nav() {
             {item.label}
           </a>
         ))}
+        <a className="topnav-contact" href={site.phoneHref} onClick={() => setOpen(false)}>
+          {site.phone}
+        </a>
+        <a className="topnav-contact" href={site.whatsappHref} rel="noopener" onClick={() => setOpen(false)}>
+          WhatsApp
+        </a>
       </nav>
     </>
   );

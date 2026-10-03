@@ -1,3 +1,5 @@
+export type PageId = 'home' | 'bim' | 'cmm' | 'privacy' | 'terms';
+
 export const site = {
   name: 'Lodestone',
   wordmark: 'lodestonemaps',
@@ -5,27 +7,76 @@ export const site = {
   domain: 'lodestonemaps.com',
   url: 'https://lodestonemaps.com/',
   email: 'info@lodestonemaps.com',
-} as const;
-
-export const seo = {
-  title: 'Lodestone Maps | Demand-side market maps, verified to source',
-  description:
-    'Demand-side market maps where every row carries its evidence. ' +
-    'Registry-first, dated, whole-market. Singapore built-environment market map active.',
+  phone: '+65 8974 6947',
+  phoneHref: 'tel:+6589746947',
+  whatsappHref: 'https://wa.me/6589746947',
+  registration:
+    'registered in the Republic of Armenia on 7 September 2026, taxpayer identification number 01102394',
+  legalUpdated: '3 October 2026',
 } as const;
 
 export const figures = {
   companies: '20,000+',
+  bimBuyers: '11,000+',
   sources: '70+',
 } as const;
 
+/* One entry per page. `file` is where prerender writes the page inside dist/;
+   Cloudflare Pages serves `bim-buyers-map.html` at `/bim-buyers-map`. */
+export const pages: Record<
+  PageId,
+  { path: string; file: string; title: string; description: string; ogTitle: string }
+> = {
+  home: {
+    path: '/',
+    file: 'index.html',
+    title: 'Lodestone Maps: market maps built to order, verified to source',
+    description:
+      'Lodestone builds market maps to order: every company in a market, read from official registries and ranked by who is likely to buy. BIM Buyers Map and Construction Market Map for Singapore available now.',
+    ogTitle: 'Lists tell you who exists. Maps tell you who buys.',
+  },
+  bim: {
+    path: '/bim-buyers-map',
+    file: 'bim-buyers-map.html',
+    title: 'BIM Buyers Map, Singapore · Lodestone Maps',
+    description: `${figures.bimBuyers} Singapore construction firms that fall under CORENET X and have no BIM team of their own, scored 1 to 10 by how soon each is likely to buy.`,
+    ogTitle: 'BIM Buyers Map, Singapore',
+  },
+  cmm: {
+    path: '/construction-market-map',
+    file: 'construction-market-map.html',
+    title: 'Construction Market Map, Singapore · Lodestone Maps',
+    description: `${figures.companies} registered Singapore construction firms in one file: what each firm is licensed for, whether it is busy now and how to reach it.`,
+    ogTitle: 'Construction Market Map, Singapore',
+  },
+  privacy: {
+    path: '/privacy',
+    file: 'privacy.html',
+    title: 'Privacy Policy · Lodestone Maps',
+    description: 'How Lodestone Maps handles personal data on its website and in its market maps.',
+    ogTitle: 'Privacy Policy',
+  },
+  terms: {
+    path: '/terms',
+    file: 'terms.html',
+    title: 'Terms and Conditions · Lodestone Maps',
+    description: 'Terms for the use of lodestonemaps.com and of the overviews and samples Lodestone sends.',
+    ogTitle: 'Terms and Conditions',
+  },
+};
+
+export function pageFromPath(pathname: string): PageId {
+  const clean = pathname.replace(/\.html$/, '').replace(/\/+$/, '') || '/';
+  const hit = (Object.keys(pages) as PageId[]).find((id) => pages[id].path === clean);
+  return hit ?? 'home';
+}
+
 export const nav = [
-  { label: 'Position', href: '#position' },
-  { label: 'Sources', href: '#sources' },
-  { label: 'Standard', href: '#standard' },
-  { label: 'Maps', href: '#maps' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Maps', href: '/#maps' },
+  { label: 'Built to order', href: '/#built-to-order' },
+  { label: 'How it works', href: '/#how-an-order-works' },
+  { label: 'FAQ', href: '/#faq' },
+  { label: 'Contact', href: '/#contact' },
 ] as const;
 
 export const anchorAliases = [
@@ -34,33 +85,140 @@ export const anchorAliases = [
 ] as const;
 
 export const hero = {
-  kicker: 'Demand-side market maps',
+  kicker: 'Market maps, built to order',
   heading: ['Lists tell you who exists.', 'Maps tell you who buys.'],
   lead:
-    'Lodestone builds demand-side market maps where every row carries its ' +
-    'evidence.',
-  primary: { label: 'Request a sample', href: '#contact' },
-  secondary: { label: 'See the sources', href: '#sources' },
+    'Lodestone builds market maps to order: every company in a market, read from its official ' +
+    'registries and its own record, and ranked by who is likely to buy. Two maps of the Singapore ' +
+    'construction market are available now.',
+  primary: { label: 'Request an overview', href: '#contact' },
+  secondary: { label: 'See the maps', href: '#maps' },
 } as const;
 
-export const position = {
-  heading: 'A claim without its source does not exist.',
-  paragraphs: [
-    'In a Lodestone map every field points to the document it was read from. If no document can be read, the field stays empty.',
-    'This is why a map covers the whole market, every company, not a sample. A sample can be argued with. A registry cannot.',
-    'It is also why every field carries the date it was read. A value without a date is a rumour.',
-    'Any market can be read this way. Lodestone reads one at a time.',
+export const maps = {
+  heading: 'Maps',
+  intro: 'Each map covers one market and answers one question: who buys. These are available now.',
+  cards: [
+    {
+      label: 'Singapore · Available now',
+      title: 'BIM Buyers Map',
+      forWho: 'For firms that sell BIM services, BIM software or BIM training.',
+      body: `${figures.bimBuyers} Singapore construction firms whose work falls under the CORENET X rules and who have no BIM team of their own. Every firm is scored from 1 to 10 by how soon it is likely to buy, with the reason behind it.`,
+      link: { label: 'See the BIM Buyers Map', href: '/bim-buyers-map' },
+    },
+    {
+      label: 'Singapore · Available now',
+      title: 'Construction Market Map',
+      forWho: 'For firms that sell into construction: materials, equipment, services and software.',
+      body: `${figures.companies} registered construction firms in one file: contractors of every trade, architects, engineering consultants and developers. Each row shows what the firm is licensed for, whether it is busy now and how to reach it.`,
+      link: { label: 'See the Construction Market Map', href: '/construction-market-map' },
+    },
+    {
+      label: 'Singapore · Coming soon',
+      title: 'Built Environment Map',
+      forWho: '',
+      body: 'The wider Singapore built environment: every registered construction firm, with or without a BCA licence, and the trades around it, from facility and property management to building materials distribution, joinery and quantity surveying.',
+      link: null,
+    },
   ],
+  other: 'Maps of other markets are built to order, to the same standard.',
 } as const;
 
 export const rowAnatomy = {
   heading: 'What is in a row',
   lead: 'A row is only as good as what can be checked behind it.',
   cells: [
-    { label: 'Identity', text: 'Legal name, registry identifier, incorporation.' },
-    { label: 'Reach', text: 'Website, professional profiles, published contact points.' },
-    { label: 'Standing', text: 'Licences, awards, active projects.' },
-    { label: 'Proof', text: 'Source URL and read date for every field.' },
+    { label: 'Identity', text: 'Registered name, registry number, date of incorporation.' },
+    {
+      label: 'Activity',
+      text: 'Licences held, contracts won, projects named on, current job ads, each with its date.',
+    },
+    {
+      label: 'Reach',
+      text: 'Website and business pages, the phone and e-mail the firm publishes, a named person with job title where one is public.',
+    },
+    { label: 'Proof', text: 'A link to the public record behind the row.' },
+  ],
+} as const;
+
+export const builtToOrder = {
+  heading: 'Built to order',
+  intro:
+    "Before the Singapore maps, Lodestone built maps to order for clients in other markets. Each one started from the client's own buying criterion.",
+  cases: [
+    {
+      label: 'United States',
+      title: 'Partner-led professional services firms',
+      rows: [
+        {
+          k: 'The question',
+          v: "Which privately held professional services firms, run by their partners or founders, fit a client's exact profile: size, ownership, and a business built on long client relationships.",
+        },
+        {
+          k: 'What was done',
+          v: "The profile and the exclusions were written down before work started. Each firm was checked against its own record and public sources. The senior decision maker was named, with the firm's mailing address and phone.",
+        },
+        {
+          k: 'The result',
+          v: 'A list the client could approach with confidence. Each firm carried the reasoning behind its place, and borderline firms were flagged rather than included.',
+        },
+      ],
+    },
+    {
+      label: 'United States',
+      title: 'Independent wholesale distributors',
+      rows: [
+        {
+          k: 'The question',
+          v: 'Which independent wholesale distributors in the Pacific Northwest fit a lower middle market profile in industrial and MRO supply, electrical, plumbing and HVAC supply, building materials, and janitorial, packaging and safety supply.',
+        },
+        {
+          k: 'What was done',
+          v: "The region was read firm by firm. Only privately held, independent distributors that met the client's size and trade-only criteria were kept, and a decision maker was named for each.",
+        },
+        {
+          k: 'The result',
+          v: 'A list ready for outreach, and an exclusion log giving the reason each other firm was left out.',
+        },
+      ],
+    },
+  ],
+  close: {
+    title: 'Name your market.',
+    text: 'If it has official registries and companies that publish, it can be mapped to the same standard.',
+    link: { label: 'Tell Lodestone about it', href: '/?map=other#contact' },
+  },
+} as const;
+
+export const orderSteps = {
+  heading: 'How an order works',
+  steps: [
+    {
+      title: 'You name the market and what you sell into it.',
+      text: 'The buying criterion is written down with you before any work starts.',
+    },
+    {
+      title: 'Lodestone reads the registries.',
+      text: 'The official registries set who is in the market. Every company enters through its registry number, never through a similar-looking name.',
+    },
+    {
+      title: "Lodestone reads each company's own record.",
+      text: 'Website, notices, job ads, licences, contracts. Facts keep their source, and dated facts keep their date.',
+    },
+    {
+      title: 'You receive the map.',
+      text: 'One spreadsheet, one row per company, ranked, with its sources, and a short presentation that explains it. Updates on request.',
+    },
+  ],
+} as const;
+
+export const position = {
+  heading: 'A claim without its source does not exist.',
+  paragraphs: [
+    "In a Lodestone map every fact comes from a document that can be opened: a registry entry, a contract award, a job ad, the company's own website. If a fact cannot be found in a document, it is not filled in.",
+    'A map covers the whole market, every company in it, not a sample. A sample can be argued with. A registry cannot.',
+    'Dated facts keep their dates, so you can see what is current.',
+    'Any market can be read this way. Lodestone reads one market at a time.',
   ],
 } as const;
 
@@ -68,74 +226,415 @@ export const sources = {
   heading: 'Which sources are allowed to speak',
   lead: 'Before a map is built, Lodestone decides which sources may speak and in what order.',
   tiers: [
-    'First, official registries: the bodies that give a company its number, its licence, its award. A company enters a map through its registry identifier, never through a similar-looking name. Pipelines built on identifiers do not break when a company renames, merges or moves.',
-    "Second, the company's own record: its website, its published notices, its own postings. What a company says about itself, read at the source and dated.",
-    'Third, everything else: directories, aggregators, third-party lists. These can point to a company. They are never used as evidence for a field.',
+    {
+      title: 'Official registries first.',
+      text: 'The bodies that give a company its number, its licence and its contracts. A company enters a map through its registry number, so a rename, a merger or a move does not break it.',
+    },
+    {
+      title: "The company's own record second.",
+      text: 'Its website, its notices, its job ads. What a company says about itself, read at the source.',
+    },
+    {
+      title: 'Everything else last.',
+      text: 'Directories and aggregators help find companies. They never override an official record.',
+    },
   ],
-  note: 'Every source is public or official. Every market is read within its own data-protection law.',
+  note: 'Every source is public or official. Every market is read within its own data protection law.',
 } as const;
 
 export const standard = {
-  heading: 'The standard behind every row',
+  heading: 'The standard behind every map',
   rules: [
-    'Every field carries its source URL and the date it was read.',
-    'Exclusions are recorded. A company that is not in the map has a documented reason.',
-    'No field is inferred. If a value cannot be read from a document, the field stays empty.',
-    'Aggregator lists and directory retellings are not evidence. The original record is.',
-    'Software gathers. A person reads. A source decides. Nothing enters a map that was not read from a document.',
+    'Firms are matched by registry number, not by name.',
+    'A website, a page or a person is shown only when it is confirmed to belong to that exact firm or its group.',
+    'Nothing is filled in by guessing.',
+    'Dated facts carry their dates: contract awards, job ads, licence expiry.',
+    'Firms are not silently dropped. A firm outside the buying criterion keeps its place in the file, with the reason.',
+    'An official record outranks a directory or an aggregator.',
   ],
 } as const;
 
-export const maps = {
-  heading: 'Maps',
-  active: {
-    label: 'Active now',
-    title: 'Singapore built-environment (AEC) market map',
-    body:
-      'Identified on the national registry number only. Every row carries its own evidence source. ' +
-      `${figures.companies} companies, read across ${figures.sources} public and official sources.`,
-    detail: 'Details on request.',
-  },
-  other: 'Maps for other markets are built to the same standard, for the market you name.',
+export const about = {
+  heading: 'Who is Lodestone',
+  text: 'Lodestone Maps builds market maps for companies that sell to other companies. It reads one market at a time, starting from its official registries. The team works from Singapore and Yerevan.',
 } as const;
 
 export const faq = {
   heading: 'Questions',
   items: [
     {
-      q: 'Where does the data come from, and how can a row be checked?',
-      a: "Every field is stored with the URL it was read from and the date. Checking a row means opening the links in that row. Registries come first, the company's own record second. Directories and aggregators are used to find companies, never to describe them.",
+      q: 'What does my team gain?',
+      a: 'Time and focus. Building a list of firms to call usually takes a new sales hire months, and it covers only the firms one person manages to find. The map gives your team the whole market on the first day, with the firms that are winning work, hiring or named on new projects at the top. Their time goes into calls and meetings, not research.',
+    },
+    {
+      q: 'Does it replace a salesperson?',
+      a: 'No. It gives your salespeople the list, so their time goes into selling. The calls and the relationships stay with your team.',
+    },
+    {
+      q: 'Who do I call first?',
+      a: 'Every firm is scored from 1 to 10 and placed in one of four tiers: Ready Now, Hot, Warm and Cold. The score rests on dated activity: government contracts won, major building contracts, projects the firm is named on, and current job ads. Each row says in one line why now.',
+    },
+    {
+      q: 'What exactly do I receive?',
+      a: 'One Excel file, one row per firm, with tabs that group the firms, and a short PDF presentation that explains every column, so the file is clear without a call. There is no login and no subscription. The file stays with you.',
+    },
+    {
+      q: 'How can a row be checked?',
+      a: "Every row links to the public record behind it, such as the firm's entry in a register or its own website. Contracts, job ads and licences carry their dates. Open the link and compare.",
     },
     {
       q: 'How is a map different from a contact database?',
-      a: 'A contact database lists companies and people that exist. A map records, for a defined market, which companies buy a defined thing, what standing they hold, and what each statement rests on. The unit is the market, not the record.',
+      a: 'A contact database lists companies and people that exist. A map takes one market, sets a buying criterion and places every company in it: who has to buy, who is busy now, who is outside the criterion and why. Contacts are part of a row, not the point of it.',
     },
     {
-      q: 'How is the boundary of a market defined?',
-      a: 'By the buying criterion, written before work starts: who buys, or must buy, the thing in question, and in which jurisdiction. In the Singapore built-environment map the criterion is regulatory: which firms are required to submit building information models. The registry sets the population. The criterion sorts it.',
+      q: 'How do I check it before buying?',
+      a: 'Ask for an overview and a sample. The sample is typical rows from across the file, from the top tiers to the bottom, exactly as they stand, with their sources. Check them against what you already know.',
     },
     {
-      q: 'How are fields dated and refreshed?',
-      a: 'Every field carries the date it was read. A map is re-read against its registries on a published cadence, and the date on each field shows what has been re-read and when.',
+      q: 'Can my team share it inside the company?',
+      a: 'Yes, inside your company. It may not be resold or passed to anyone outside it. The terms of each order are agreed in writing.',
     },
     {
-      q: 'Can a map be built for a market that is not covered yet?',
-      a: 'Yes. The method depends on the market having registries and companies that publish, not on the industry or the country. Lodestone reads one market at a time.',
+      q: 'How current is it, and where does the data come from?',
+      a: "Every source is public or official: government registers, contract awards, licence lists, job boards, and the companies' own websites and business pages. Dated facts, such as contracts, job ads and licences, carry their dates, and a map is updated on request. For people, a map holds business details only: name, job title and a link to the public profile. Phones and e-mails are the ones a firm publishes for business. Anyone can ask Lodestone to correct or remove an entry about them.",
     },
     {
-      q: 'What about data-protection law?',
-      a: 'Sources are public or official, and the information held is company information and business roles. Each market is read within its own data-protection law. The source of every field is kept, so any entry can be traced and, where required, removed.',
+      q: 'Can Lodestone build a map of my market?',
+      a: 'Yes. A market can be mapped when it has official registries and companies that publish. Tell Lodestone what you sell and to whom. The buying criterion is written down with you before any work starts.',
     },
     {
-      q: 'How do I get a sample?',
-      a: 'Use the form below. A sample is real rows from the market you name, with identifiers masked and the source link kept on every field.',
+      q: 'How do I start?',
+      a: `Send the form, write to ${site.email} or send a WhatsApp message. Lodestone replies within one business day with an overview and a sample for your segment. Lodestone's business development partner in Singapore can then meet you in person or by video call to go through it.`,
     },
   ],
 } as const;
 
 export const contact = {
-  heading: 'Request a sample',
+  heading: 'Request an overview',
   lead:
-    'Tell Lodestone the market you are working on. A sample extract follows: ' +
-    'real rows with identifiers masked and the source URL against each field.',
+    'Tell Lodestone what you sell and to whom. You receive a short overview and a sample of typical rows for your segment.',
+  reply: 'Replies within one business day.',
+  mapOptions: [
+    { value: 'bim-buyers-map', label: 'BIM Buyers Map' },
+    { value: 'construction-market-map', label: 'Construction Market Map' },
+    { value: 'other', label: 'A map of another market' },
+  ],
+  button: 'Request an overview',
+  sent: 'Thank you. Lodestone replies within one business day.',
 } as const;
+
+export type ProductBlock = {
+  heading: string;
+  paragraphs?: readonly string[];
+  list?: readonly string[];
+  after?: readonly string[];
+};
+
+export type Product = {
+  label: string;
+  title: string;
+  lead: string;
+  blocks: readonly ProductBlock[];
+  cta: { label: string; href: string };
+};
+
+export const products: Record<'bim' | 'cmm', Product> = {
+  bim: {
+    label: 'Singapore · Available now',
+    title: 'BIM Buyers Map',
+    lead: 'Which Singapore construction firms have to work with BIM and have no BIM team of their own, ranked by how soon each one is likely to buy.',
+    blocks: [
+      {
+        heading: 'Who it is for',
+        paragraphs: [
+          'Firms that sell to them: BIM services and modelling, BIM and construction software and its resellers, BIM and CORENET X training, laser scanning and reality capture, digital construction platforms, certification and inspection.',
+        ],
+      },
+      {
+        heading: 'Why now',
+        paragraphs: [
+          'Since 1 October 2026, every new building project of 5,000 m² and above in Singapore must be submitted through CORENET X, the submission system built on BIM models in the IFC-SG format. Many of the contractors, consultants and developers the rule reaches have no BIM people of their own. They build a team or buy the work from outside.',
+        ],
+      },
+      {
+        heading: 'What is in the map',
+        paragraphs: [
+          `${figures.bimBuyers} firms whose work falls under the rule and who have no BIM team of their own: contractors in BIM-relevant trades, architects and engineering consultants, and developers.`,
+          'Every firm is scored from 1 to 10 and placed in Ready Now, Hot, Warm or Cold. The score rests on dated activity: government contracts, major building contracts, CORENET X submissions and current hiring. Each row says why now.',
+          'The rest of the market is in the file too, each firm with its reason:',
+        ],
+        list: [
+          'firms with their own BIM team, with the evidence, so your team does not spend time on them',
+          'borderline firms with a few modellers of their own, who may still buy part of the work',
+          'firms in trades the rule does not reach',
+          'firms with no public footprint',
+          'the firms that sell BIM in Singapore',
+        ],
+      },
+      {
+        heading: 'What is in a row',
+        paragraphs: [
+          "Registered name and UEN, licences and grades from the Building and Construction Authority (BCA), recent government contracts and projects, job ads in the last 90 days, BIM status, website and business pages, the firm's published phone and e-mail, a named person with job title and level where one is public, and a link to the public source.",
+        ],
+      },
+      {
+        heading: 'What you receive',
+        paragraphs: [
+          'One Excel file with a tab for each tier and group, and a short PDF presentation that explains every column.',
+        ],
+      },
+      {
+        heading: 'How to check it before buying',
+        paragraphs: [
+          'Ask for an overview and a sample. The sample is typical rows from every tier, exactly as they stand in the file, with their sources.',
+        ],
+      },
+    ],
+    cta: { label: 'Request an overview', href: '/?map=bim-buyers-map#contact' },
+  },
+  cmm: {
+    label: 'Singapore · Available now',
+    title: 'Construction Market Map',
+    lead: `Singapore's construction market in one file: ${figures.companies} registered firms, one row per firm. Who each firm is, whether it is busy now, and how to reach it.`,
+    blocks: [
+      {
+        heading: 'Who it is for',
+        paragraphs: ['Firms whose customers are construction firms:'],
+        list: [
+          'building materials and finishes; doors, windows, glass and facades',
+          'M&E, electrical, HVAC and water equipment; lighting',
+          'furniture and fit-out; plant, machinery and crane hire; subcontracting',
+          'testing, inspection, certification and safety training',
+          'software; manpower; insurance and finance',
+        ],
+      },
+      {
+        heading: 'What is in the map',
+        paragraphs: ['Every firm sits in one tab by type:'],
+        list: [
+          'Main contractors and builders',
+          'M&E contractors',
+          'Structure, civil and facade contractors',
+          'Interior and finishing contractors',
+          'Suppliers, facility management and landscape',
+          'Architects',
+          'Engineers and consultants',
+          'Developers',
+          'Construction firms without a BCA licence',
+          'Other construction firms',
+        ],
+        after: [
+          'Every firm is scored from 1 to 10 and placed in Ready Now, Hot, Warm or Cold by how busy it is now: contracts won, new building projects and hiring. Each row says why now.',
+        ],
+      },
+      {
+        heading: 'What is in a row',
+        paragraphs: [
+          "Registered name and UEN, kind of work, BCA licence and grade where the firm holds one, bizSAFE level, government contracts and projects, job ads in the last 90 days, website and business pages, the firm's published phone and e-mail, a named person with job title and level where one is public, and a link to the public source.",
+        ],
+      },
+      {
+        heading: 'What it saves',
+        list: [
+          'Building the list by hand: the whole market is there on the first day, not only the few hundred firms everyone already knows.',
+          `Checking: the facts sit in ${figures.sources} sources that often disagree. Here they are matched firm by firm, by registry number, and put in one row.`,
+          'Guessing where to start: the firms that are winning work, hiring or starting new projects come first.',
+        ],
+      },
+      {
+        heading: 'What you receive',
+        paragraphs: [
+          'One Excel file with a tab for each type of firm, and a short PDF presentation that explains every column.',
+        ],
+      },
+      {
+        heading: 'How to check it before buying',
+        paragraphs: [
+          'Ask for an overview and a sample. The sample is typical rows from the top of the list to the bottom, exactly as they stand in the file, with their sources.',
+        ],
+      },
+    ],
+    cta: { label: 'Request an overview', href: '/?map=construction-market-map#contact' },
+  },
+};
+
+export type LegalSection = { heading: string; paragraphs?: readonly string[]; list?: readonly string[] };
+
+export const legal: Record<'privacy' | 'terms', { title: string; intro: string; sections: readonly LegalSection[] }> = {
+  privacy: {
+    title: 'Privacy Policy',
+    intro: `This policy explains how ${site.legalName} ("Lodestone Maps", "we") handles personal data on ${site.domain} and in the market maps we build. We handle personal data in line with Singapore's Personal Data Protection Act and the law of the Republic of Armenia, where the company is registered.`,
+    sections: [
+      {
+        heading: '1. Who we are',
+        paragraphs: [
+          `${site.legalName}, ${site.registration}. We build market maps of companies for businesses that sell to other businesses. Contact: ${site.email}, ${site.phone}.`,
+        ],
+      },
+      {
+        heading: '2. What we collect through this website',
+        list: [
+          'When you send the form: your work e-mail, your company, the map you are interested in, your message and, if you choose, a phone or WhatsApp number.',
+          'When you write to us or call us: the details you give us.',
+          'Technical data: our hosting provider records standard connection data, such as IP address and browser type, to keep the site secure and working. We do not use advertising trackers.',
+        ],
+      },
+      {
+        heading: '3. Why we use it',
+        paragraphs: [
+          'To answer your request, send the overview and sample you asked for, discuss an order and keep a record of our correspondence. We do not sell your data and we do not add it to our market maps.',
+        ],
+      },
+      {
+        heading: '4. Business information in our maps',
+        paragraphs: [
+          `Our maps describe companies. Where they include people, they hold business details only: name, job title and a link to a public professional profile, taken from public or official sources. Phone numbers and e-mail addresses in our maps are the ones companies publish for business. Every entry keeps the source it was taken from, so it can be traced. If you want an entry about you corrected or removed, write to ${site.email} and we will act on it.`,
+        ],
+      },
+      {
+        heading: '5. Service providers',
+        paragraphs: [
+          'We use trusted providers to run the site and handle messages: website hosting and security (Cloudflare), form delivery (Web3Forms) and e-mail (Zoho Mail). They process data only to provide their service to us.',
+        ],
+      },
+      {
+        heading: '6. How long we keep data',
+        paragraphs: [
+          'Enquiries and correspondence are kept for as long as needed to answer the request and for our business records, then deleted.',
+        ],
+      },
+      {
+        heading: '7. Your rights',
+        paragraphs: [
+          `You can ask what personal data we hold about you, ask us to correct it, or withdraw your consent and ask us to delete it. Write to ${site.email}. We reply within 30 days.`,
+        ],
+      },
+      {
+        heading: '8. Security',
+        paragraphs: [
+          'We protect data with access controls and trusted providers. No method of transfer or storage is completely secure, but we take reasonable care.',
+        ],
+      },
+      {
+        heading: '9. Changes',
+        paragraphs: ['We may update this policy. The date at the top shows the latest version.'],
+      },
+      {
+        heading: '10. Contact',
+        paragraphs: [`${site.email} · ${site.phone} (phone and WhatsApp)`],
+      },
+    ],
+  },
+  terms: {
+    title: 'Terms and Conditions',
+    intro: `These terms apply to the use of ${site.domain} and to the overviews and samples we send. By using the site you accept them.`,
+    sections: [
+      {
+        heading: '1. The company',
+        paragraphs: [`The site is run by ${site.legalName}, ${site.registration}.`],
+      },
+      {
+        heading: '2. Use of the site',
+        paragraphs: [
+          "You may read and share the site's pages for your own business purposes. Do not copy the site's content in bulk, interfere with its operation or use it for unlawful purposes.",
+        ],
+      },
+      {
+        heading: '3. Overviews and samples',
+        paragraphs: [
+          'Overviews and samples we send before an order are for your evaluation only. They remain our property. Do not resell, publish or pass them to third parties without our written consent.',
+        ],
+      },
+      {
+        heading: '4. Orders',
+        paragraphs: [
+          'The scope, price, delivery and licence of each map are agreed in writing for each order. Those terms take precedence over these general terms.',
+        ],
+      },
+      {
+        heading: '5. Accuracy',
+        paragraphs: [
+          'Each fact in our maps is taken from a public or official source and keeps its source. Sources can change after they are read. We take care to keep our maps accurate, but we do not guarantee that every value is current at the moment you use it.',
+        ],
+      },
+      {
+        heading: '6. Intellectual property',
+        paragraphs: [
+          `The site, its text and design, and our maps belong to ${site.legalName} or its licensors.`,
+        ],
+      },
+      {
+        heading: '7. Liability',
+        paragraphs: [
+          'To the extent the law allows, we are not liable for indirect or consequential loss arising from the use of the site or of materials sent before an order. Our liability under an order is set in that order.',
+        ],
+      },
+      {
+        heading: '8. Personal data',
+        paragraphs: ['Personal data is handled as described in our Privacy Policy.'],
+      },
+      {
+        heading: '9. Governing law',
+        paragraphs: [
+          'These terms are governed by the laws of the Republic of Armenia, and disputes are settled by the courts of the Republic of Armenia.',
+        ],
+      },
+      {
+        heading: '10. Contact',
+        paragraphs: [`${site.email} · ${site.phone}`],
+      },
+    ],
+  },
+};
+
+/* Structured data, built from the copy above so the FAQ is never duplicated by hand. */
+export function jsonLd(page: PageId): object[] {
+  const org = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: site.legalName,
+    url: site.url,
+    email: site.email,
+    telephone: site.phone,
+    description: 'Market maps built to order: every company in a market, read from official registries and ranked by who is likely to buy.',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'sales',
+      telephone: site.phone,
+      email: site.email,
+      areaServed: 'SG',
+      availableLanguage: 'English',
+    },
+  };
+  const product = (id: 'bim' | 'cmm') => ({
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: products[id].title,
+    brand: { '@type': 'Brand', name: 'Lodestone Maps' },
+    description: pages[id].description,
+    url: `${site.url.replace(/\/$/, '')}${pages[id].path}`,
+    offers: {
+      '@type': 'Offer',
+      availability: 'https://schema.org/InStock',
+      url: `${site.url.replace(/\/$/, '')}${products[id].cta.href}`,
+    },
+  });
+  if (page === 'home') {
+    return [
+      org,
+      product('bim'),
+      product('cmm'),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faq.items.map((item) => ({
+          '@type': 'Question',
+          name: item.q,
+          acceptedAnswer: { '@type': 'Answer', text: item.a },
+        })),
+      },
+    ];
+  }
+  if (page === 'bim' || page === 'cmm') return [org, product(page)];
+  return [org];
+}

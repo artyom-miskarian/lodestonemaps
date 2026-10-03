@@ -13,9 +13,11 @@ export function Sources() {
         <div>
           <ol className="method-list">
             {sources.tiers.map((tier, i) => (
-              <li className="method-item" key={tier}>
+              <li className="method-item" key={tier.title}>
                 <span className="mono method-num">{String(i + 1).padStart(2, '0')}</span>
-                <span>{tier}</span>
+                <span>
+                  <strong className="step-title">{tier.title}</strong> {tier.text}
+                </span>
               </li>
             ))}
           </ol>
