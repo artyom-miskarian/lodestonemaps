@@ -239,7 +239,7 @@ export const sources = {
       text: 'Directories and aggregators help find companies. They never override an official record.',
     },
   ],
-  note: 'Every source is public or official. Every market is read within its own data protection law.',
+  note: "Every source is public or official. A map records facts with a link to where they were published; it does not copy other websites' content. Business details about people are handled under Singapore's Personal Data Protection Act.",
 } as const;
 
 export const standard = {
@@ -381,7 +381,7 @@ export const products: Record<'bim' | 'cmm', Product> = {
       {
         heading: 'What is in a row',
         paragraphs: [
-          "Registered name and UEN, licences and grades from the Building and Construction Authority (BCA), recent government contracts and projects, job ads in the 90 days before the file date, BIM status, website and business pages, the firm's published phone and e-mail, a named person with job title and seniority level where one is public, and a link to the public source.",
+          "Registered name and UEN, licences and grades from the Building and Construction Authority (BCA), recent government contracts and projects, job ads in the last 90 days, BIM status, website and business pages, the firm's published phone and e-mail, a named person with job title and seniority level where one is public, and a link to the public source.",
         ],
       },
       {
@@ -445,7 +445,7 @@ export const products: Record<'bim' | 'cmm', Product> = {
       {
         heading: 'What is in a row',
         paragraphs: [
-          "Registered name and UEN, kind of work, BCA licence and grade where the firm holds one, bizSAFE level, government contracts and projects, job ads in the 90 days before the file date, website and business pages, the firm's published phone and e-mail, a named person with job title and seniority level where one is public, and a link to the public source.",
+          "Registered name and UEN, kind of work, BCA licence and grade where the firm holds one, bizSAFE level, government contracts and projects, job ads in the last 90 days, website and business pages, the firm's published phone and e-mail, a named person with job title and seniority level where one is public, and a link to the public source.",
         ],
       },
       {
