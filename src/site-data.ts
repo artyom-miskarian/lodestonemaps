@@ -87,8 +87,8 @@ export const hero = {
   kicker: 'Market maps',
   heading: ['Lists tell you who exists.', 'Maps tell you who buys.'],
   lead:
-    'Lodestone builds market maps: every company in a market, read from its official registries ' +
-    'and its own record, and ranked by who is likely to buy. Two maps of the Singapore construction ' +
+    'Lodestone builds market maps: one file with every company in a market, read from its official ' +
+    'registries and its own record, and ranked by who is likely to buy. Two maps of the Singapore construction ' +
     'market are ready now.',
   primary: { label: 'See the maps', href: '#maps' },
   secondary: { label: 'Request an overview and sample', href: '#contact' },
@@ -102,21 +102,21 @@ export const maps = {
       label: 'Singapore · Available now',
       title: 'BIM Buyers Map',
       forWho: 'For firms that sell BIM services, BIM software or BIM training.',
-      body: `${figures.bimBuyers} Singapore construction firms whose work falls under CORENET X, in force since 1 October 2026, and who have no BIM team of their own. Every firm is scored from 1 to 10 by how soon it is likely to buy, with the reason behind it.`,
+      body: `${figures.bimBuyers} Singapore construction firms in the trades CORENET X reaches, with no BIM team of their own. Since 1 October 2026, every new building project of 5,000 m² and above goes through CORENET X. Every firm is scored from 1 to 10 by how soon it is likely to buy, with the reason behind it.`,
       link: { label: 'See the BIM Buyers Map', href: '/bim-buyers-map' },
     },
     {
       label: 'Singapore · Available now',
       title: 'Construction Market Map',
       forWho: 'For firms that sell into construction: materials, equipment, services and software.',
-      body: `${figures.companies} registered construction firms in one file: contractors of every trade, architects, engineering consultants and developers. Each row shows what the firm is licensed for, whether it is busy now and how to reach it.`,
+      body: `${figures.companies} registered construction firms in one file: contractors of every trade, architects, engineering consultants and developers. Each row shows what the firm is licensed for, whether it is busy now and how to reach it. Every firm is scored from 1 to 10 by how busy it is now, with the reason behind it.`,
       link: { label: 'See the Construction Market Map', href: '/construction-market-map' },
     },
     {
       label: 'Singapore · Coming soon',
       title: 'Built Environment Map',
       forWho: '',
-      body: 'The wider Singapore built environment: every registered construction firm, with or without a BCA licence, and the trades around it, from facility and property management to building materials distribution, joinery and quantity surveying.',
+      body: 'The wider Singapore built environment: the trades around construction, from facility and property management to building materials distribution, joinery and quantity surveying.',
       link: null,
     },
   ],
@@ -143,7 +143,7 @@ export const rowAnatomy = {
 export const builtToOrder = {
   heading: 'Built to order',
   intro:
-    "Before the Singapore maps, Lodestone built maps to order for clients in other markets. Each one started from the client's own buying criterion.",
+    "Before the Singapore maps, the team behind Lodestone built maps to order for clients in other markets. Each one started from the client's own buying criterion.",
   cases: [
     {
       label: 'United States',
@@ -296,7 +296,7 @@ export const faq = {
     },
     {
       q: 'How current is it, and where does the data come from?',
-      a: "Every source is public or official: government registers, contract awards, licence lists, job boards, and the companies' own websites and business pages. Dated facts, such as contracts, job ads and licences, carry their dates, and a map is updated on request. For people, a map holds business details only: name, job title and a link to the public profile. Phones and e-mails are the ones a firm publishes for business. Anyone can ask Lodestone to correct or remove an entry about them.",
+      a: "Every source is public or official: government registers, contract awards, licence lists, job boards, and the companies' own websites and business pages. Dated facts, such as contracts, job ads and licences, carry their dates, each map states the date it was built, and a map is updated on request. For people, a map holds business details only: name, job title and a link to the public profile. Phones and e-mails are the ones a firm publishes for business. Anyone can ask Lodestone to correct or remove an entry about them.",
     },
     {
       q: 'Can Lodestone build a map of my market?',
@@ -343,7 +343,7 @@ export const products: Record<'bim' | 'cmm', Product> = {
   bim: {
     label: 'Singapore · Available now',
     title: 'BIM Buyers Map',
-    lead: 'The Singapore construction firms that have to deliver BIM and have no BIM team of their own, ranked by who is likely to buy first.',
+    lead: 'The Singapore construction firms in the trades CORENET X reaches that have no BIM team of their own, ranked by who is likely to buy first.',
     blocks: [
       {
         heading: 'Who it is for',
@@ -354,23 +354,24 @@ export const products: Record<'bim' | 'cmm', Product> = {
       {
         heading: 'Why now',
         paragraphs: [
-          'Since 1 October 2026, every new building project of 5,000 m² and above in Singapore must be submitted through CORENET X, the submission system built on BIM models in the IFC-SG format. Many of the contractors, consultants and developers the rule reaches have no BIM people of their own. They build a team or buy the work from outside.',
+          'Since 1 October 2026, every new building project of 5,000 m² and above in Singapore must be submitted through CORENET X, with BIM models in the IFC-SG format. The format and the gateways are new for everyone on such a project, from the consultants who submit to the builders who hand over the as-built model.',
+          `In ${figures.bimBuyers} of the firms in the trades the rule reaches, Lodestone found no BIM team of their own. They build a team or buy the work from outside.`,
         ],
         source: {
-          label: 'Source: CORENET X implementation timeline, Singapore government',
+          label: 'Source: CORENET X implementation timeline (support.corenet.gov.sg)',
           href: 'https://support.corenet.gov.sg/hc/en-us/articles/14813415847695-What-is-the-implementation-timeline-for-CORENET-X',
         },
       },
       {
         heading: 'What is in the map',
         paragraphs: [
-          `${figures.bimBuyers} firms whose work falls under the rule and who have no BIM team of their own: contractors in BIM-relevant trades, architects and engineering consultants, and developers.`,
+          `${figures.bimBuyers} firms in the trades the rule reaches, with no BIM team of their own: contractors in BIM-relevant trades, architects and engineering consultants, and developers.`,
           'Before a firm is counted as a buyer, its people and its own website are checked for BIM capacity. Where BIM capacity is found, the firm is listed separately, with the evidence.',
-          'Every firm is scored from 1 to 10 and placed in Ready Now, Hot, Warm or Cold. The score is computed from dated evidence: government contracts, major building contracts, CORENET X submissions and current hiring, with recent evidence counting most. Each row says why now.',
+          'Every firm is scored from 1 to 10 and placed in Ready Now, Hot, Warm or Cold. The score is computed from dated evidence: government contracts, major building contracts, projects named in CORENET X records and current hiring, with recent evidence counting most. Each row says why now.',
           `The rest of the market is in the same file, ${figures.companies} firms in all, each firm with its reason:`,
         ],
         list: [
-          'firms with their own BIM team, with the evidence, so your team does not spend time on them',
+          'firms with their own BIM team, with the evidence, kept apart from the buyers',
           'borderline firms with a few modellers of their own, who may still buy part of the work',
           'firms in trades the rule does not reach',
           'firms with no public footprint',
@@ -380,7 +381,7 @@ export const products: Record<'bim' | 'cmm', Product> = {
       {
         heading: 'What is in a row',
         paragraphs: [
-          "Registered name and UEN, licences and grades from the Building and Construction Authority (BCA), recent government contracts and projects, job ads in the last 90 days, BIM status, website and business pages, the firm's published phone and e-mail, a named person with job title and level where one is public, and a link to the public source.",
+          "Registered name and UEN, licences and grades from the Building and Construction Authority (BCA), recent government contracts and projects, job ads in the 90 days before the file date, BIM status, website and business pages, the firm's published phone and e-mail, a named person with job title and seniority level where one is public, and a link to the public source.",
         ],
       },
       {
@@ -438,13 +439,13 @@ export const products: Record<'bim' | 'cmm', Product> = {
           'Other construction firms',
         ],
         after: [
-          'Every firm is scored from 1 to 10 and placed in Ready Now, Hot, Warm or Cold by how busy it is now: contracts won, new building projects and hiring, with recent evidence counting most. Each row says why now.',
+          'Every firm is scored from 1 to 10 and placed in Ready Now, Hot, Warm or Cold by how busy it is now: contracts won, new building projects and hiring, with recent evidence counting most. Each row says why now. The score shows how busy a firm is, so start with the tabs for the trades that buy what you sell.',
         ],
       },
       {
         heading: 'What is in a row',
         paragraphs: [
-          "Registered name and UEN, kind of work, BCA licence and grade where the firm holds one, bizSAFE level, government contracts and projects, job ads in the last 90 days, website and business pages, the firm's published phone and e-mail, a named person with job title and level where one is public, and a link to the public source.",
+          "Registered name and UEN, kind of work, BCA licence and grade where the firm holds one, bizSAFE level, government contracts and projects, job ads in the 90 days before the file date, website and business pages, the firm's published phone and e-mail, a named person with job title and seniority level where one is public, and a link to the public source.",
         ],
       },
       {
@@ -500,7 +501,7 @@ export const legal: Record<'privacy' | 'terms', { title: string; intro: string; 
       {
         heading: '5. Service providers',
         paragraphs: [
-          'We use trusted third-party infrastructure providers for website hosting, security, form delivery and corporate e-mail. They process data only on our instructions, to provide their service to us.',
+          'We use trusted third-party infrastructure providers for website hosting, security, form delivery and corporate e-mail. They process data only on our instructions, to provide their service to us. Personal data may be stored and processed outside Singapore, including in Armenia and by these providers. Where it is, we protect it to a standard comparable to the PDPA.',
         ],
       },
       {
@@ -512,7 +513,7 @@ export const legal: Record<'privacy' | 'terms', { title: string; intro: string; 
       {
         heading: '7. Your rights',
         paragraphs: [
-          `You can ask what personal data we hold about you, ask us to correct it, or withdraw your consent and ask us to delete it. Write to ${site.email}. We reply within 30 days.`,
+          `You can ask what personal data we hold about you, ask us to correct it, or withdraw your consent and ask us to delete it. Our data protection officer can be reached at ${site.email}. We reply within 30 days.`,
         ],
       },
       {
@@ -554,7 +555,7 @@ export const legal: Record<'privacy' | 'terms', { title: string; intro: string; 
       {
         heading: '4. Orders',
         paragraphs: [
-          'The scope, price, delivery and licence of each map are agreed in writing for each order. Those terms take precedence over these general terms.',
+          `Orders are made with and invoiced by ${site.legalName}. The scope, price, delivery and licence of each map are agreed in writing for each order. Those terms take precedence over these general terms.`,
         ],
       },
       {
