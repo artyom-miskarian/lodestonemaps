@@ -1,11 +1,11 @@
 import { renderToString } from 'react-dom/server';
 import { App } from './App';
-import { jsonLd, pages, site } from './site-data';
-import type { PageId } from './site-data';
+import { jsonLd, notFound, pages, site } from './site-data';
+import type { PageId, RenderId } from './site-data';
 
-export { pages };
+export { notFound, pages };
 
-export function render(page: PageId) {
+export function render(page: RenderId) {
   return renderToString(<App page={page} />);
 }
 
@@ -37,4 +37,11 @@ export function head(page: PageId) {
     <meta name="twitter:image" content="https://lodestonemaps.com/og.png" />
     <meta name="twitter:image:alt" content="Lodestone Maps: lists tell you who exists, maps tell you who buys. Dark title card with a compass rose." />
     ${ld}`;
+}
+
+/* <head> of the 404 page: kept out of the index, no canonical, no social card, no structured data. */
+export function headNotFound() {
+  return `<title>${esc(notFound.title)}</title>
+    <meta name="description" content="${esc(notFound.description)}" />
+    <meta name="robots" content="noindex" />`;
 }

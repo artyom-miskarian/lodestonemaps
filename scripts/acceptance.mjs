@@ -93,5 +93,29 @@ for (const page of PAGES) {
   }
 }
 
+// The 404 page: built locally as dist/404.html; on a live site an unknown address must answer 404.
+{
+  const checks = [];
+  if (base && base.startsWith('http')) {
+    const res = await fetch(base.replace(/\/$/, '') + '/no-such-page-' + Date.now());
+    const raw = await res.text();
+    checks.push(['unknown address answers 404', res.status === 404]);
+    checks.push(['404 page is noindex', raw.includes('name="robots" content="noindex"')]);
+  } else {
+    const raw = readFileSync('dist/404.html', 'utf8');
+    const sitemap = readFileSync('dist/sitemap.xml', 'utf8');
+    checks.push(['404 page built', raw.includes('Page not found')]);
+    checks.push(['404 page is noindex', raw.includes('name="robots" content="noindex"')]);
+    checks.push(['404 page has no canonical', !raw.includes('rel="canonical"')]);
+    checks.push(['404 page not in sitemap', !sitemap.includes('404')]);
+  }
+  console.log('\n404');
+  for (const [name, ok] of checks) {
+    total++;
+    if (!ok) failed++;
+    console.log(`  ${ok ? 'pass' : 'FAIL'}  ${name}`);
+  }
+}
+
 console.log(`\n${total - failed}/${total} passed`);
 process.exit(failed ? 1 : 0);

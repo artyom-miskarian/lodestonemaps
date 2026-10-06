@@ -12,8 +12,9 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ProductPage } from './components/ProductPage';
 import { LegalPage } from './components/LegalPage';
+import { NotFound } from './components/NotFound';
 import { anchorAliases } from './site-data';
-import type { PageId } from './site-data';
+import type { RenderId } from './site-data';
 
 function AnchorAlias({ alias }: { alias: string }) {
   return <span className="anchor-alias" id={alias} aria-hidden="true" />;
@@ -47,7 +48,7 @@ function Home() {
   );
 }
 
-export function App({ page }: { page: PageId }) {
+export function App({ page }: { page: RenderId }) {
   const home = page === 'home';
   return (
     <>
@@ -58,6 +59,7 @@ export function App({ page }: { page: PageId }) {
       {home ? <Home /> : null}
       {page === 'bim' || page === 'cmm' ? <ProductPage id={page} /> : null}
       {page === 'privacy' || page === 'terms' ? <LegalPage id={page} /> : null}
+      {page === 'notfound' ? <NotFound /> : null}
 
       <div className="frame">
         <Footer home={home} />

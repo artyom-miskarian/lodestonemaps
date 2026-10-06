@@ -1,4 +1,6 @@
 export type PageId = 'home' | 'bim' | 'cmm' | 'privacy' | 'terms';
+/* The 404 page is built like the others but is not a page of the site: no sitemap entry, no canonical, noindex. */
+export type RenderId = PageId | 'notfound';
 
 export const site = {
   name: 'Lodestone',
@@ -63,6 +65,21 @@ export const pages: Record<
     ogTitle: 'Terms and Conditions',
   },
 };
+
+/* Cloudflare Pages answers any unknown address with dist/404.html and status 404. Without that file it
+   treats the site as a single-page app and answers every address, even /.env, with the home page and 200. */
+export const notFound = {
+  file: '404.html',
+  title: 'Page not found · Lodestone Maps',
+  description: 'This page is not on lodestonemaps.com.',
+  heading: 'Page not found',
+  lead: 'There is no page at this address.',
+  links: [
+    { label: 'Home', href: '/' },
+    { label: 'BIM Buyers Map', href: '/bim-buyers-map' },
+    { label: 'Construction Market Map', href: '/construction-market-map' },
+  ],
+} as const;
 
 export function pageFromPath(pathname: string): PageId {
   const clean = pathname.replace(/\.html$/, '').replace(/\/+$/, '') || '/';
@@ -600,6 +617,7 @@ export function jsonLd(page: PageId): object[] {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: site.legalName,
+    alternateName: 'Lodestone Maps',
     url: site.url,
     logo: `${site.url}icon-512.png`,
     email: site.email,
@@ -627,8 +645,17 @@ export function jsonLd(page: PageId): object[] {
     areaServed: { '@type': 'Country', name: 'Singapore' },
     provider: { '@type': 'Organization', name: site.legalName, url: site.url },
   });
+  /* The site name Google shows above the result; alternateName covers the one-word spelling. */
+  const website = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Lodestone Maps',
+    alternateName: ['lodestonemaps', 'lodestonemaps.com'],
+    url: site.url,
+  };
   if (page === 'home') {
     return [
+      website,
       org,
       product('bim'),
       product('cmm'),

@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { execSync } from 'node:child_process';
-import { render, head, pages } from './dist-ssr/entry-server.js';
+import { render, head, headNotFound, notFound, pages } from './dist-ssr/entry-server.js';
 
 // The client build gives one template (dist/index.html). Every page is that template with its own
 // <head> block and its own prerendered body, written to the file named in `pages` (site-data.ts).
@@ -18,6 +18,13 @@ for (const [id, page] of Object.entries(pages)) {
   writeFileSync(`dist/${page.file}`, html);
   console.log(`prerendered dist/${page.file} (${(html.length / 1024).toFixed(1)} kB)`);
 }
+
+// The 404 page: written next to the pages but left out of the sitemap below.
+const missing = template
+  .replace(headRe, headNotFound())
+  .replace(rootMarker, `<div id="root" data-page="notfound">${render('notfound')}</div>`);
+writeFileSync(`dist/${notFound.file}`, missing);
+console.log(`prerendered dist/${notFound.file} (${(missing.length / 1024).toFixed(1)} kB)`);
 rmSync('dist-ssr', { recursive: true, force: true });
 
 function lastModified() {
