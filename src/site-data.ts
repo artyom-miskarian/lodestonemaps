@@ -399,7 +399,7 @@ export const products: Record<'bim' | 'cmm', Product> = {
       {
         heading: 'What is in a row',
         paragraphs: [
-          "Registered name and UEN, licences and grades from the Building and Construction Authority (BCA), recent government contracts and projects, job ads in the last 90 days, BIM status, website and business pages, the firm's published phone and e-mail, a named person with job title and seniority level where one is public, and a link to the public source.",
+          "Registered name and UEN, licences and grades from the Building and Construction Authority (BCA), recent government contracts and projects, job ads in the last 90 days, BIM status, website and business pages, the firm's published phone and e-mail, a named person with job title and seniority level where one is public, and a link to the firm's entry in a public register.",
         ],
       },
       {
@@ -463,7 +463,7 @@ export const products: Record<'bim' | 'cmm', Product> = {
       {
         heading: 'What is in a row',
         paragraphs: [
-          "Registered name and UEN, kind of work, BCA licence and grade where the firm holds one, bizSAFE level, government contracts and projects, job ads in the last 90 days, website and business pages, the firm's published phone and e-mail, a named person with job title and seniority level where one is public, and a link to the public source.",
+          "Registered name and UEN, kind of work, BCA licence and grade where the firm holds one, bizSAFE level, government contracts and projects, job ads in the last 90 days, website and business pages, the firm's published phone and e-mail, a named person with job title and seniority level where one is public, and a link to the firm's entry in a public register.",
         ],
       },
       {
