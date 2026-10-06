@@ -40,7 +40,7 @@ export const pages: Record<
     path: '/bim-buyers-map',
     file: 'bim-buyers-map.html',
     title: 'BIM Buyers Map, Singapore · Lodestone Maps',
-    description: `${figures.bimBuyers} Singapore construction firms in the trades CORENET X reaches, with no BIM footprint in their people or on their website, scored 1 to 10 by how soon each is likely to buy.`,
+    description: `${figures.bimBuyers} Singapore contractors, consultants and developers in BIM-relevant work, with no BIM footprint in their people or on their website, scored 1 to 10 by how soon each is likely to buy.`,
     ogTitle: 'BIM Buyers Map, Singapore',
   },
   cmm: {
@@ -119,7 +119,7 @@ export const maps = {
       label: 'Singapore · Available now',
       title: 'BIM Buyers Map',
       forWho: 'For firms that sell BIM services, BIM software or BIM training.',
-      body: `${figures.bimBuyers} Singapore construction firms in the trades CORENET X reaches, with no BIM footprint in their people or on their website. Since 1 October 2026, every new building project of 5,000 m² and above goes through CORENET X. Every firm is scored from 1 to 10 by how soon it is likely to buy, with the reason behind it.`,
+      body: `${figures.bimBuyers} Singapore contractors, consultants and developers in BIM-relevant work, with no BIM footprint in their people or on their website. Since 1 October 2026, new building projects of 5,000 m² and above are submitted through CORENET X, as one coordinated model in IFC+SG. Every firm is scored from 1 to 10 by how soon it is likely to buy, with the reason behind it.`,
       link: { label: 'See the BIM Buyers Map', href: '/bim-buyers-map' },
     },
     {
@@ -153,7 +153,7 @@ export const rowAnatomy = {
       label: 'Reach',
       text: 'Website and business pages, the phone and e-mail the firm publishes, a named person with job title where one is public.',
     },
-    { label: 'Proof', text: 'A link to the public record behind the row.' },
+    { label: 'Proof', text: "A link to the firm's entry in a public register, which confirms the exact company by its registry number." },
   ],
 } as const;
 
@@ -297,7 +297,7 @@ export const faq = {
     },
     {
       q: 'How can a row be checked?',
-      a: "Every row links to the public record behind it, such as the firm's entry in a register or its own website. Contracts, job ads and licences carry their dates, so any row can be checked by opening its link.",
+      a: "Every row links to the firm's entry in a public register, such as the BCA register or its company registry profile, which confirms the exact company by its registry number. Contracts, job ads and licences carry their dates, so the facts in a row can be checked against their sources.",
     },
     {
       q: 'How is a map different from a contact database?',
@@ -360,7 +360,7 @@ export const products: Record<'bim' | 'cmm', Product> = {
   bim: {
     label: 'Singapore · Available now',
     title: 'BIM Buyers Map',
-    lead: 'The Singapore construction firms in the trades CORENET X reaches, with no BIM footprint in their people or on their website, ranked by who is likely to buy first.',
+    lead: 'Singapore contractors, consultants and developers in BIM-relevant work, with no BIM footprint in their people or on their website, ranked by who is likely to buy first.',
     blocks: [
       {
         heading: 'Who it is for',
@@ -371,26 +371,27 @@ export const products: Record<'bim' | 'cmm', Product> = {
       {
         heading: 'Why now',
         paragraphs: [
-          'Since 1 October 2026, every new building project of 5,000 m² and above in Singapore must be submitted through CORENET X, with BIM models in the IFC-SG format. The format and the gateways are new for everyone on such a project, from the consultants who submit to the builders who hand over the as-built model.',
-          `In ${figures.bimBuyers} of the firms in the trades the rule reaches, Lodestone found no BIM footprint in their people or on their website. They build a team or buy the work from outside.`,
+          'BIM submission is not new in Singapore: since 2015, plans for new building projects of 5,000 m² and above have been submitted in BIM. CORENET X changes how the submission is made. It became mandatory for new projects of 30,000 m² and above on 1 October 2025, and for new projects of 5,000 m² and above on 1 October 2026, including major additions and alterations. Smaller projects may opt in.',
+          "Instead of separate submissions to each agency, the project coordinator, usually the lead architect, makes one coordinated submission at each gateway, from design to completion, with a federated model in IFC+SG, Singapore's openBIM format. Every discipline's model has to meet that format.",
+          `Converting models to IFC+SG and coordinating them across disciplines is new work for many firms. In ${figures.bimBuyers} firms in BIM-relevant work, Lodestone found no BIM footprint in their people or on their website. They are the most likely to buy that work in.`,
         ],
         source: {
-          label: 'Source: CORENET X implementation timeline (support.corenet.gov.sg)',
-          href: 'https://support.corenet.gov.sg/hc/en-us/articles/14813415847695-What-is-the-implementation-timeline-for-CORENET-X',
+          label: 'Source: URA circular DC26-08, Updates to CORENET X implementation plan, 23 July 2026',
+          href: 'https://www.ura.gov.sg/guidelines/circulars/dc26-08/',
         },
       },
       {
         heading: 'What is in the map',
         paragraphs: [
-          `${figures.bimBuyers} firms in the trades the rule reaches, with no BIM footprint in their people or on their website: contractors in BIM-relevant trades, architects and engineering consultants, and developers.`,
+          `${figures.bimBuyers} firms with no BIM footprint in their people or on their website: contractors in BIM-relevant trades, architects and engineering consultants, and developers.`,
           'Before a firm is counted as a buyer, its people and its own website are checked for BIM capacity. Where BIM capacity is found, the firm is listed separately, with the evidence.',
           'Every firm is scored from 1 to 10 and placed in Ready Now, Hot, Warm or Cold. The score is computed from dated evidence: government contracts, major building contracts, projects named in CORENET X records and current hiring, with recent evidence counting most. Each row says why now.',
           `The rest of the market is in the same file, ${figures.companies} firms in all, each firm with its reason:`,
         ],
         list: [
-          'firms with their own BIM team, with the evidence, kept apart from the buyers',
+          'firms that already run BIM, in house or through a provider, with the evidence: a separate list, useful to sellers of software and training, and to BIM services for overflow work or a change of provider',
           'borderline firms with a few modellers of their own, who may still buy part of the work',
-          'firms in trades the rule does not reach',
+          'construction-related firms outside BIM-relevant work',
           'construction firms without a current BCA licence',
           'the firms that sell BIM in Singapore',
         ],
