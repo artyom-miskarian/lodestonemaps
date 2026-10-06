@@ -1,0 +1,5 @@
+# A short code after a map page (/construction-market-map/k7) serves the same page with status 200.
+# Letters carry one code per recipient, so the visit shows up in Cloudflare analytics under its own path.
+# The page keeps its canonical URL, so search engines see one page.
+/construction-market-map/*  /construction-market-map  200
+/bim-buyers-map/*  /bim-buyers-map  200
