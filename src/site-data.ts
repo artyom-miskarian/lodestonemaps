@@ -13,7 +13,7 @@ export const site = {
   phoneHref: 'tel:+6589746947',
   whatsappHref: 'https://wa.me/6589746947',
   registration:
-    'registered in the Republic of Armenia on 7 September 2026, state registration number 999.110.1608692, taxpayer identification number 01102394',
+    'registered in the Republic of Armenia, state registration number 999.110.1608692, taxpayer identification number 01102394',
 } as const;
 
 export const figures = {
